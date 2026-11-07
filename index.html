@@ -66,22 +66,61 @@ function playSound(kind){
  else if(kind==='error'){beep(ctx,250,.19,.075,'square');beep(ctx,165,.2,.05,'square',.16)}
  else if(kind==='good'){beep(ctx,660,.10,.055);beep(ctx,950,.14,.055,'sine',.1)}
 }
+// Layered friction, mechanical grinding and hot-metal sizzle.
+// Sounds run only while the player is actively tracing the panel.
+let lastGrindingSpark=0;
 function startTorch(){
  if(torchNode||!soundEnabled)return;
  const ctx=audioContext();if(!ctx)return;
- const len=Math.floor(ctx.sampleRate*.5),buffer=ctx.createBuffer(1,len,ctx.sampleRate),samples=buffer.getChannelData(0);
- for(let i=0;i<len;i++)samples[i]=Math.random()*2-1;
- const source=ctx.createBufferSource(),hi=ctx.createBiquadFilter(),lo=ctx.createBiquadFilter(),gain=ctx.createGain();
- source.buffer=buffer;source.loop=true;
- hi.type='highpass';hi.frequency.value=450;lo.type='lowpass';lo.frequency.value=3100;
- source.connect(hi);hi.connect(lo);lo.connect(gain);gain.connect(ctx.destination);
- gain.gain.setValueAtTime(.001,ctx.currentTime);gain.gain.linearRampToValueAtTime(.075,ctx.currentTime+.09);
- source.start();torchNode={source,gain,ctx};
+ // Reusable looping noise for realistic metal-on-metal friction.
+ const len=Math.floor(ctx.sampleRate*.8),buffer=ctx.createBuffer(1,len,ctx.sampleRate),data=buffer.getChannelData(0);
+ for(let i=0;i<len;i++)data[i]=Math.random()*2-1;
+ const output=ctx.createGain();
+ output.gain.setValueAtTime(.001,ctx.currentTime);
+ output.gain.linearRampToValueAtTime(.8,ctx.currentTime+.075);
+ output.connect(ctx.destination);
+ const parts=[];
+ function band(type,cutoff,q,level){
+  const source=ctx.createBufferSource(),filter=ctx.createBiquadFilter(),gain=ctx.createGain();
+  source.buffer=buffer;source.loop=true;filter.type=type;filter.frequency.value=cutoff;
+  filter.Q.value=q;gain.gain.value=level;
+  source.connect(filter);filter.connect(gain);gain.connect(output);
+  source.start();parts.push(source);return {filter,gain};
+ }
+ // Deep grinding rasp against the reinforced steel.
+ const grind=band('bandpass',1120,.75,.13);
+ // Hot, airy blowtorch hiss in the background.
+ const burn=band('highpass',2400,.65,.07);
+ // A vibrating motor-like whir rather than a pure electronic tone.
+ const motor=ctx.createOscillator(),motorFilter=ctx.createBiquadFilter(),motorGain=ctx.createGain();
+ motor.type='sawtooth';motor.frequency.value=92;
+ motorFilter.type='lowpass';motorFilter.frequency.value=390;motorGain.gain.value=.014;
+ motor.connect(motorFilter);motorFilter.connect(motorGain);motorGain.connect(output);
+ motor.start();parts.push(motor);
+ torchNode={parts,output,ctx,grind,burn,motor};
+}
+function grindingMovement(){
+ const node=torchNode;if(!node)return;
+ const t=node.ctx.currentTime;
+ // Slight movement-based pitch and friction shifts prevent a static loop.
+ const variation=Math.random();
+ node.grind.filter.frequency.setTargetAtTime(900+variation*650,t,.06);
+ node.motor.frequency.setTargetAtTime(80+variation*38,t,.08);
+ if(performance.now()-lastGrindingSpark>125){
+  lastGrindingSpark=performance.now();
+  // Very short pops sound like hot metal spitting as it is cut.
+  if(Math.random()>.35)noiseBurst(node.ctx,.024,.026,3400+Math.random()*1200);
+ }
 }
 function stopTorch(){
  if(!torchNode)return;
- const {source,gain,ctx}=torchNode;torchNode=null;
- try{gain.gain.cancelScheduledValues(ctx.currentTime);gain.gain.setValueAtTime(Math.max(.001,gain.gain.value),ctx.currentTime);gain.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+.1);source.stop(ctx.currentTime+.12)}catch(e){}
+ const {parts,output,ctx}=torchNode;torchNode=null;
+ try{
+  output.gain.cancelScheduledValues(ctx.currentTime);
+  output.gain.setValueAtTime(Math.max(.001,output.gain.value),ctx.currentTime);
+  output.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+.095);
+  for(const source of parts)source.stop(ctx.currentTime+.12);
+ }catch(e){}
 }
 $('soundToggle').onclick=()=>{soundEnabled=!soundEnabled;$('soundToggle').textContent=soundEnabled?'🔊 SOUND: ON':'🔇 SOUND: OFF';$('soundToggle').setAttribute('aria-pressed',String(soundEnabled));if(!soundEnabled)stopTorch();else playSound('button')};
 let hackRound=0,hackRounds=3,relayRound=0,relayTarget=50,relayPos=0,relayDir=1,relayHits=0,relayLast=0,checkpointHold=0,lastCutAt=0,tipX=0,tipY=0,targetIndex=0,pointerX=-50,pointerY=-50,pointerNear=false,phase='idle',cutCfg,hackCfg,deadline=0,heat=0,errors=0,seamIndex=0,segments=[],progress=0,active=false,lastTick=performance.now(),hackSeq=[],hackInput=0,showing=false,timer=null,playing=false,heatLock=false,cutSlipUntil=0;
@@ -190,7 +229,7 @@ function cutMove(e){
    }
    if(!stillOnOutline){cutOffTrack(e);return}
  }
- if(pointerNear&&moved>=0.6&&nearest>current){startTorch()
+ if(pointerNear&&moved>=0.6&&nearest>current){startTorch();grindingMovement();
    progress=Math.min(1,nearest/(segments.length-1));
    updateMarker();
    if(progress>=.999){
