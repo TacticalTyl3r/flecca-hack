@@ -66,51 +66,57 @@ function playSound(kind){
  else if(kind==='error'){beep(ctx,250,.19,.075,'square');beep(ctx,165,.2,.05,'square',.16)}
  else if(kind==='good'){beep(ctx,660,.10,.055);beep(ctx,950,.14,.055,'sine',.1)}
 }
-// Layered friction, mechanical grinding and hot-metal sizzle.
-// Sounds run only while the player is actively tracing the panel.
-let lastGrindingSpark=0;
+// A pitch-based power-tool effect: spinning motor + metallic contact.
+// No continuous white-noise source (the old version sounded like static).
 function startTorch(){
  if(torchNode||!soundEnabled)return;
  const ctx=audioContext();if(!ctx)return;
- // Reusable looping noise for realistic metal-on-metal friction.
- const len=Math.floor(ctx.sampleRate*.8),buffer=ctx.createBuffer(1,len,ctx.sampleRate),data=buffer.getChannelData(0);
- for(let i=0;i<len;i++)data[i]=Math.random()*2-1;
- const output=ctx.createGain();
+ const output=ctx.createGain(),compressor=ctx.createDynamicsCompressor();
+ compressor.threshold.value=-18;
+ compressor.knee.value=12;
+ compressor.ratio.value=2.5;
+ compressor.attack.value=.006;
+ compressor.release.value=.13;
  output.gain.setValueAtTime(.001,ctx.currentTime);
- output.gain.linearRampToValueAtTime(.8,ctx.currentTime+.075);
- output.connect(ctx.destination);
+ output.gain.linearRampToValueAtTime(.66,ctx.currentTime+.12);
+ output.connect(compressor);compressor.connect(ctx.destination);
  const parts=[];
- function band(type,cutoff,q,level){
-  const source=ctx.createBufferSource(),filter=ctx.createBiquadFilter(),gain=ctx.createGain();
-  source.buffer=buffer;source.loop=true;filter.type=type;filter.frequency.value=cutoff;
-  filter.Q.value=q;gain.gain.value=level;
-  source.connect(filter);filter.connect(gain);gain.connect(output);
-  source.start();parts.push(source);return {filter,gain};
+ function voice(type,frequency,volume,filterFrequency){
+  const osc=ctx.createOscillator(),filter=ctx.createBiquadFilter(),amp=ctx.createGain();
+  osc.type=type;osc.frequency.value=frequency;
+  filter.type='lowpass';filter.frequency.value=filterFrequency;filter.Q.value=.65;
+  amp.gain.value=volume;
+  osc.connect(filter);filter.connect(amp);amp.connect(output);
+  osc.start();parts.push(osc);return {osc,filter,amp};
  }
- // Deep grinding rasp against the reinforced steel.
- const grind=band('bandpass',1120,.75,.13);
- // Hot, airy blowtorch hiss in the background.
- const burn=band('highpass',2400,.65,.07);
- // A vibrating motor-like whir rather than a pure electronic tone.
- const motor=ctx.createOscillator(),motorFilter=ctx.createBiquadFilter(),motorGain=ctx.createGain();
- motor.type='sawtooth';motor.frequency.value=92;
- motorFilter.type='lowpass';motorFilter.frequency.value=390;motorGain.gain.value=.014;
- motor.connect(motorFilter);motorFilter.connect(motorGain);motorGain.connect(output);
- motor.start();parts.push(motor);
- torchNode={parts,output,ctx,grind,burn,motor};
+ // A low rotary motor drives the grinder; the harmonics make it distinctly mechanical.
+ const motor=voice('sawtooth',155,.072,900);
+ const motorBody=voice('triangle',78,.048,600);
+ // Slightly detuned higher harmonics give a metal-on-metal rasp instead of a hiss.
+ const teeth=voice('sawtooth',515,.023,1900);
+ const friction=voice('triangle',865,.016,2000);
+ // Rapid contact vibration produces a repeating grinding rhythm.
+ const chatter=ctx.createOscillator(),chatterDepth=ctx.createGain();
+ chatter.type='sine';chatter.frequency.value=23;chatterDepth.gain.value=.012;
+ chatter.connect(chatterDepth);chatterDepth.connect(teeth.amp.gain);
+ chatter.start();parts.push(chatter);
+ // Slow load oscillation, like a grinder pressing against a thick plate.
+ const load=ctx.createOscillator(),loadDepth=ctx.createGain();
+ load.type='sine';load.frequency.value=4.8;loadDepth.gain.value=3;
+ load.connect(loadDepth);loadDepth.connect(motor.osc.frequency);
+ load.start();parts.push(load);
+ torchNode={parts,output,ctx,motor,motorBody,teeth,friction};
 }
 function grindingMovement(){
  const node=torchNode;if(!node)return;
  const t=node.ctx.currentTime;
- // Slight movement-based pitch and friction shifts prevent a static loop.
- const variation=Math.random();
- node.grind.filter.frequency.setTargetAtTime(900+variation*650,t,.06);
- node.motor.frequency.setTargetAtTime(80+variation*38,t,.08);
- if(performance.now()-lastGrindingSpark>125){
-  lastGrindingSpark=performance.now();
-  // Very short pops sound like hot metal spitting as it is cut.
-  if(Math.random()>.35)noiseBurst(node.ctx,.024,.026,3400+Math.random()*1200);
- }
+ // Slight RPM changes respond to motion without random crackling.
+ const change=Math.random();
+ node.motor.osc.frequency.setTargetAtTime(140+change*25,t,.09);
+ node.motorBody.osc.frequency.setTargetAtTime(72+change*10,t,.11);
+ node.teeth.osc.frequency.setTargetAtTime(490+change*70,t,.08);
+ node.friction.osc.frequency.setTargetAtTime(810+change*110,t,.08);
+ node.teeth.amp.gain.setTargetAtTime(.020+change*.007,t,.09);
 }
 function stopTorch(){
  if(!torchNode)return;
@@ -118,8 +124,8 @@ function stopTorch(){
  try{
   output.gain.cancelScheduledValues(ctx.currentTime);
   output.gain.setValueAtTime(Math.max(.001,output.gain.value),ctx.currentTime);
-  output.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+.095);
-  for(const source of parts)source.stop(ctx.currentTime+.12);
+  output.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+.10);
+  for(const source of parts)source.stop(ctx.currentTime+.13);
  }catch(e){}
 }
 $('soundToggle').onclick=()=>{soundEnabled=!soundEnabled;$('soundToggle').textContent=soundEnabled?'🔊 SOUND: ON':'🔇 SOUND: OFF';$('soundToggle').setAttribute('aria-pressed',String(soundEnabled));if(!soundEnabled)stopTorch();else playSound('button')};
