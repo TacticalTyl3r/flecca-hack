@@ -156,7 +156,7 @@ function pointerPos(e){const pt=$('cutSvg').createSVGPoint();pt.x=e.clientX;pt.y
      return;
    }
  }
- $('instruction').textContent=pointerNear?'DRAG ALONG THE SEAM — Stationary holding does not cut. Release to cool.':'RETURN TO THE CUT FRONT — Stay close to the orange line.';
+ if(!pointerNear)stopTorch();$('instruction').textContent=pointerNear?'FOLLOW THE METAL CUTOUT — Keep tracing while the torch burns. Release to cool.':'RETURN TO THE CUT FRONT — Stay close to the orange line.';
  stats();
 }
 $('cutSvg').addEventListener('pointerdown',e=>{if(phase!=='cut'||heatLock)return;let p=pointerPos(e),at=segments[Math.floor(progress*(segments.length-1))];if(distance(p,at)<cutCfg.tolerance*1.45){active=true;lastCutAt=performance.now();$('cutSvg').setPointerCapture(e.pointerId);cutMove(e)}else{$('instruction').textContent='Start at the bright cutting point, then drag along the orange path.'}});$('cutSvg').addEventListener('pointermove',cutMove);['pointerup','pointercancel','lostpointercapture'].forEach(evt=>$('cutSvg').addEventListener(evt,()=>{stopTorch();active=false;pointerNear=false;targetIndex=Math.floor(progress*(segments.length-1));updateMarker()}));
