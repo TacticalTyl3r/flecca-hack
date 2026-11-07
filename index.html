@@ -26,10 +26,62 @@
 #wireScreen{background:radial-gradient(ellipse at 50% 0%,#30464b,#101c23 75%);min-height:420px}
 .cut-svg #activeArmor{filter:drop-shadow(0 7px 10px #000b)}.cut-svg .guide{stroke:#6b3920;stroke-width:17;opacity:.95}.cut-svg .glow{stroke:#ff812a;stroke-width:8}.cut-svg .trace{stroke:#fff0bf;stroke-width:5}
 #wireSvg{cursor:crosshair}#wireScreen .wire-module{border-color:#8a9aa0}
-#wireArt path{touch-action:manipulation}#wireArt path:hover{filter:drop-shadow(0 0 12px white)!important}</style></head><body><main class="wrap"><header class="top"><div><div class="brand"><span class="brand-mark">F</span><span class="brand-word">FLEECA <em>BANK</em></span></div><div class="eyebrow">SECURITY OPERATIONS // UNAUTHORIZED ACCESS</div><h1>SECURITY BREACH</h1><div class="sub">Four-stage interactive browser prototype · Mouse and touch supported</div></div><div class="pill">SYSTEM STATUS: <span id="status">STANDBY</span></div></header><div class="layout"><aside class="panel"><h2>⚙ Difficulty Configuration</h2><label class="label" for="cutDifficulty">THERMITE CUTTING</label><select id="cutDifficulty"><option value="easy">Easy</option><option value="normal" selected>Normal</option><option value="hard">Hard</option><option value="extreme">Extreme</option></select><div class="desc" id="cutDesc"></div><label class="label" for="hackDifficulty">SECURITY HACK</label><select id="hackDifficulty"><option value="easy">Easy</option><option value="normal" selected>Normal</option><option value="hard">Hard</option><option value="extreme">Extreme</option></select><div class="desc" id="hackDesc"></div><button class="primary" id="start">START BREACH</button><button id="reset" style="width:100%;margin-top:9px">RESET DEMO</button><p class="hint">Settings apply when starting a new run. Stage 1: trace the glowing outline to release each metal cutout. The cutter follows your mouse instantly. Stay reasonably close to the orange seam as you drag; holding still will not cut. Release to cool. Stage 2: expose and physically sever the correct wires. Stage 3: complete 2–3 terminal codes. Stage 4: stabilize three security relays.</p></aside><section class="panel"><div class="stage"><b id="stageTitle">AWAITING OPERATOR</b><span id="instruction">Choose your difficulty and start.</span></div><div class="stats"><div class="stat"><small>TIME LEFT</small><b id="time">--</b></div><div class="stat"><small>ACCESS</small><b id="seam">0 / 0</b></div><div class="stat"><small>HEAT</small><b id="heatText">0%</b></div><div class="stat"><small>ERRORS</small><b id="errors">0 / 0</b></div></div><div class="view" id="view"><div class="center" id="welcome"><div style="font-size:58px">🔥</div><h2>Fleeca Vault Access Panel</h2><p>Cut through reinforced armor layers, expose and sever the correct security wires, override the keypad, and stabilize the lock relays.</p><p class="warning">Select difficulty settings and press Start Breach.</p></div><svg id="cutSvg" class="cut-svg hide" viewBox="0 0 700 500" aria-label="Thermite cutting panel"><defs><pattern id="metal" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M0 22L22 0" stroke="#29414b" stroke-width="1"/></pattern></defs><rect x="27" y="24" width="646" height="452" rx="24" class="frame"/><rect x="42" y="39" width="616" height="422" rx="18" fill="url(#metal)" stroke="#20343e" stroke-width="2"/><rect x="80" y="68" width="540" height="364" rx="12" class="inner"/><g id="doorHardware"><rect x="95" y="83" width="510" height="336" rx="9" fill="#18262d" stroke="#74818a" stroke-width="5"/><rect x="111" y="99" width="478" height="304" rx="5" fill="#26353c" stroke="#111a21" stroke-width="8"/><rect x="123" y="111" width="454" height="280" rx="4" fill="url(#metal)" stroke="#6b7a80" stroke-width="2"/><path d="M125 148 H575 M125 352 H575" stroke="#64717a" stroke-width="6" opacity=".75"/><rect x="141" y="160" width="418" height="178" rx="7" fill="#111d24" stroke="#89969c" stroke-width="7"/><rect x="154" y="172" width="392" height="154" rx="3" fill="#28373e" stroke="#34444b" stroke-width="5"/><g fill="#a6b4b9" stroke="#18272d" stroke-width="3"><circle cx="147" cy="134" r="7"/><circle cx="553" cy="134" r="7"/><circle cx="147" cy="370" r="7"/><circle cx="553" cy="370" r="7"/></g><g id="layerBadge"><rect x="257" y="42" width="186" height="35" rx="5" fill="#101a1f" stroke="#9bc63e" stroke-width="2"/><text id="layerText" x="350" y="64" text-anchor="middle" font-size="13" font-weight="800" letter-spacing="2" fill="#c3e87b">ARMOR LAYER 01</text></g><g transform="translate(575 205)"><rect width="70" height="106" rx="7" fill="#0d171c" stroke="#64767b" stroke-width="3"/><circle cx="35" cy="32" r="20" fill="#273b40" stroke="#9fc945" stroke-width="3"/><path d="M25 32h20M35 22v20" stroke="#a4c7c7" stroke-width="4"/><rect x="17" y="71" width="36" height="8" rx="3" fill="#98d54b"/><rect x="17" y="85" width="24" height="5" rx="2" fill="#4b626a"/></g></g><g id="bolts"></g><g id="armorLayers"></g><g id="cutPaths"></g><circle id="cutter" r="9" class="cursor" cx="-50" cy="-50"/></svg><div id="wireScreen" class="hide" style="width:100%;padding:12px;text-align:center"><div class="eyebrow">STAGE 02 // EXPOSED SECURITY CIRCUITS</div><h2 style="margin:9px">Cut the Alarm Wires</h2><p class="hint" id="wireHint">Find the GLOWING wire and CLICK or TAP it to cut. Wrong wires trigger an alarm.</p><div class="wire-module"><div class="wire-module-top"><span>FLEECA · SECURITY JUNCTION</span><span id="wireStep">CIRCUIT 1 / 3</span></div><svg id="wireSvg" viewBox="0 0 660 340" aria-label="Security wires cutting minigame" style="width:100%;touch-action:none;display:block"><rect x="17" y="18" width="626" height="304" rx="14" fill="#14232a" stroke="#70848b" stroke-width="8"/><rect x="42" y="43" width="576" height="254" rx="8" fill="#0b151c" stroke="#354c55" stroke-width="3"/><g id="wireArt"></g><rect x="50" y="53" width="560" height="235" rx="8" fill="transparent"/></svg><div class="wire-module-bottom"><span>WARNING · LIVE ALARM CIRCUITS</span><span id="wireStatus">AWAITING CUT</span></div></div><p class="hint">HOW TO CUT: Simply CLICK or TAP the glowing wire. It will snap apart automatically. Avoid the other wires.</p></div><div id="hackScreen" class="hide" style="width:100%;text-align:center;padding:15px"><div class="eyebrow">FLEECA BANK // ACCESS CONTROL TERMINAL</div><div class="eyebrow" id="hackState">MEMORIZE THE SIGNAL</div><h2 style="margin:8px">Vault Door Keypad Override</h2><div class="terminal-screen"><span class="terminal-led"></span><span id="terminalReadout">SECURITY LOCK ENGAGED</span><span class="terminal-led"></span></div><p class="hint" id="hackHint">Watch the tiles illuminate, then repeat the sequence.</p><div class="keypad-housing"><div class="keypad-top"><span>FLEECA SECURE ENTRY</span><span>MODEL FLC-16</span></div><div class="hack-grid" id="hackGrid"></div><div class="keypad-bottom"><span>● ENCRYPTED INPUT</span><span>AUTHORIZED PERSONNEL ONLY</span></div></div><div id="hackProgress" class="sub"></div></div><div id="relayScreen" class="hide" style="width:100%;padding:28px;max-width:650px;margin:auto;text-align:center"><div class="eyebrow">STAGE 04 // SECURITY RELAY</div><h2>Stabilize the Lock Circuit</h2><p class="hint">Stop the moving indicator inside the green zone. Three successful locks complete the breach.</p><div id="relayCount" style="margin:18px;color:#b6ec64;font-weight:800">RELAY 1 / 3</div><div id="relayTrack" style="height:42px;position:relative;border:2px solid #567b31;border-radius:12px;background:#111e26;overflow:hidden;margin:28px 0"><div id="relayZone" style="position:absolute;top:0;bottom:0;width:18%;background:#76d34266;border-left:2px solid #b4ff68;border-right:2px solid #b4ff68"></div><div id="relayNeedle" style="position:absolute;top:0;bottom:0;width:5px;background:#fff1b2;box-shadow:0 0 12px #ffb52e"></div></div><button class="primary" id="relayStop" style="width:100%">LOCK RELAY · SPACE</button><p id="relayFeedback" class="hint">Time your press carefully.</p></div><div id="result" class="center hide"></div></div><div class="footer"><div style="flex:1;min-width:180px"><div class="row"><small id="meterLabel">CUTTING PROGRESS</small><small id="meterValue">0%</small></div><div class="progress"><div id="meter"></div></div><div class="row"><small>THERMAL LOAD</small><small id="thermal">0%</small></div><div class="progress heat"><div id="heatMeter"></div></div></div><button id="skip" class="hide">SKIP TO HACK (TEST)</button></div><p class="hint" id="footerHint">Fleeca Bank is a fictional GTA universe brand. This is a standalone FiveM-style game UI demonstration.</p></section></div></main><script>
+#wireArt path{touch-action:manipulation}#wireArt path:hover{filter:drop-shadow(0 0 12px white)!important}
+.wire-timing{padding:13px 14px;margin:13px auto;width:min(530px,96%);border:2px solid #65904a;border-radius:8px;font-weight:900;font-size:clamp(13px,2.1vw,17px);letter-spacing:.7px;background:#1b3925;color:#dbfbb2;transition:background .12s,color .12s}
+.wire-timing.live{border-color:#f39b46;background:#482b14;color:#ffd3a0}
+.wire-snip{max-width:450px;margin:6px auto 8px!important;display:block;min-height:56px;font-size:16px}
+.wire-snip.wire-live{background:linear-gradient(100deg,#8b421d,#ac5927)!important;border-color:#cf8345!important}
+#wireArt{user-select:none}#wireSvg{touch-action:none;user-select:none;cursor:crosshair}
+#wireArt path{pointer-events:none}
+</style></head><body><main class="wrap"><header class="top"><div><div class="brand"><span class="brand-mark">F</span><span class="brand-word">FLEECA <em>BANK</em></span></div><div class="eyebrow">SECURITY OPERATIONS // UNAUTHORIZED ACCESS</div><h1>SECURITY BREACH</h1><div class="sub">Four-stage interactive browser prototype · Mouse and touch supported</div></div><div class="pill">SYSTEM STATUS: <span id="status">STANDBY</span></div></header><div class="layout"><aside class="panel"><h2>⚙ Difficulty Configuration</h2><label class="label" for="cutDifficulty">THERMITE CUTTING</label><select id="cutDifficulty"><option value="easy">Easy</option><option value="normal" selected>Normal</option><option value="hard">Hard</option><option value="extreme">Extreme</option></select><div class="desc" id="cutDesc"></div><label class="label" for="hackDifficulty">SECURITY HACK</label><select id="hackDifficulty"><option value="easy">Easy</option><option value="normal" selected>Normal</option><option value="hard">Hard</option><option value="extreme">Extreme</option></select><div class="desc" id="hackDesc"></div><button class="primary" id="start">START BREACH</button><button id="reset" style="width:100%;margin-top:9px">RESET DEMO</button><button id="soundToggle" type="button" aria-pressed="true" style="width:100%;margin-top:9px">🔊 SOUND: ON</button><p class="hint">Settings apply when starting a new run. Stage 1: trace the glowing outline to release each metal cutout. The cutter follows your mouse instantly. Stay reasonably close to the orange seam as you drag; holding still will not cut. Release to cool. Stage 2: use the snippers when the electrical pulse is away from the cut point. Stage 3: complete 2–3 terminal codes. Stage 4: stabilize three security relays.</p></aside><section class="panel"><div class="stage"><b id="stageTitle">AWAITING OPERATOR</b><span id="instruction">Choose your difficulty and start.</span></div><div class="stats"><div class="stat"><small>TIME LEFT</small><b id="time">--</b></div><div class="stat"><small>ACCESS</small><b id="seam">0 / 0</b></div><div class="stat"><small>HEAT</small><b id="heatText">0%</b></div><div class="stat"><small>ERRORS</small><b id="errors">0 / 0</b></div></div><div class="view" id="view"><div class="center" id="welcome"><div style="font-size:58px">🔥</div><h2>Fleeca Vault Access Panel</h2><p>Cut through reinforced armor layers, expose and sever the correct security wires, override the keypad, and stabilize the lock relays.</p><p class="warning">Select difficulty settings and press Start Breach.</p></div><svg id="cutSvg" class="cut-svg hide" viewBox="0 0 700 500" aria-label="Thermite cutting panel"><defs><pattern id="metal" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M0 22L22 0" stroke="#29414b" stroke-width="1"/></pattern></defs><rect x="27" y="24" width="646" height="452" rx="24" class="frame"/><rect x="42" y="39" width="616" height="422" rx="18" fill="url(#metal)" stroke="#20343e" stroke-width="2"/><rect x="80" y="68" width="540" height="364" rx="12" class="inner"/><g id="doorHardware"><rect x="95" y="83" width="510" height="336" rx="9" fill="#18262d" stroke="#74818a" stroke-width="5"/><rect x="111" y="99" width="478" height="304" rx="5" fill="#26353c" stroke="#111a21" stroke-width="8"/><rect x="123" y="111" width="454" height="280" rx="4" fill="url(#metal)" stroke="#6b7a80" stroke-width="2"/><path d="M125 148 H575 M125 352 H575" stroke="#64717a" stroke-width="6" opacity=".75"/><rect x="141" y="160" width="418" height="178" rx="7" fill="#111d24" stroke="#89969c" stroke-width="7"/><rect x="154" y="172" width="392" height="154" rx="3" fill="#28373e" stroke="#34444b" stroke-width="5"/><g fill="#a6b4b9" stroke="#18272d" stroke-width="3"><circle cx="147" cy="134" r="7"/><circle cx="553" cy="134" r="7"/><circle cx="147" cy="370" r="7"/><circle cx="553" cy="370" r="7"/></g><g id="layerBadge"><rect x="257" y="42" width="186" height="35" rx="5" fill="#101a1f" stroke="#9bc63e" stroke-width="2"/><text id="layerText" x="350" y="64" text-anchor="middle" font-size="13" font-weight="800" letter-spacing="2" fill="#c3e87b">ARMOR LAYER 01</text></g><g transform="translate(575 205)"><rect width="70" height="106" rx="7" fill="#0d171c" stroke="#64767b" stroke-width="3"/><circle cx="35" cy="32" r="20" fill="#273b40" stroke="#9fc945" stroke-width="3"/><path d="M25 32h20M35 22v20" stroke="#a4c7c7" stroke-width="4"/><rect x="17" y="71" width="36" height="8" rx="3" fill="#98d54b"/><rect x="17" y="85" width="24" height="5" rx="2" fill="#4b626a"/></g></g><g id="bolts"></g><g id="armorLayers"></g><g id="cutPaths"></g><circle id="cutter" r="9" class="cursor" cx="-50" cy="-50"/></svg><div id="wireScreen" class="hide" style="width:100%;padding:12px;text-align:center"><div class="eyebrow">STAGE 02 // EXPOSED SECURITY CIRCUITS</div><h2 style="margin:9px">Cut the Alarm Wires</h2><p class="hint" id="wireHint">Wait until the electrical spark moves away from the marked cut point, then click the scissors.</p><div id="wireTiming" class="wire-timing safe" role="status">WATCH THE MOVING ELECTRICITY</div><div class="wire-module"><div class="wire-module-top"><span>FLEECA · SECURITY JUNCTION</span><span id="wireStep">CIRCUIT 1 / 3</span></div><svg id="wireSvg" viewBox="0 0 660 340" aria-label="Security wires cutting minigame" style="width:100%;touch-action:none;display:block"><rect x="17" y="18" width="626" height="304" rx="14" fill="#14232a" stroke="#70848b" stroke-width="8"/><rect x="42" y="43" width="576" height="254" rx="8" fill="#0b151c" stroke="#354c55" stroke-width="3"/><g id="wireArt"></g></svg><div class="wire-module-bottom"><span>⚡ LIVE SECURITY CIRCUITS</span><span id="wireStatus">WAIT FOR SAFE MOMENT</span></div></div><button id="wireSnip" class="primary wire-snip" type="button">✂ SNIP AT THE MARKED SPOT</button><p class="hint">The bright wire is your target. Watch the blue electrical spark travel along it. When the spark is <strong>away from the scissors marker</strong>, click the marker or the SNIP button. Cutting while electricity passes the marker triggers an alarm strike.</p></div><div id="hackScreen" class="hide" style="width:100%;text-align:center;padding:15px"><div class="eyebrow">FLEECA BANK // ACCESS CONTROL TERMINAL</div><div class="eyebrow" id="hackState">MEMORIZE THE SIGNAL</div><h2 style="margin:8px">Vault Door Keypad Override</h2><div class="terminal-screen"><span class="terminal-led"></span><span id="terminalReadout">SECURITY LOCK ENGAGED</span><span class="terminal-led"></span></div><p class="hint" id="hackHint">Watch the tiles illuminate, then repeat the sequence.</p><div class="keypad-housing"><div class="keypad-top"><span>FLEECA SECURE ENTRY</span><span>MODEL FLC-16</span></div><div class="hack-grid" id="hackGrid"></div><div class="keypad-bottom"><span>● ENCRYPTED INPUT</span><span>AUTHORIZED PERSONNEL ONLY</span></div></div><div id="hackProgress" class="sub"></div></div><div id="relayScreen" class="hide" style="width:100%;padding:28px;max-width:650px;margin:auto;text-align:center"><div class="eyebrow">STAGE 04 // SECURITY RELAY</div><h2>Stabilize the Lock Circuit</h2><p class="hint">Stop the moving indicator inside the green zone. Three successful locks complete the breach.</p><div id="relayCount" style="margin:18px;color:#b6ec64;font-weight:800">RELAY 1 / 3</div><div id="relayTrack" style="height:42px;position:relative;border:2px solid #567b31;border-radius:12px;background:#111e26;overflow:hidden;margin:28px 0"><div id="relayZone" style="position:absolute;top:0;bottom:0;width:18%;background:#76d34266;border-left:2px solid #b4ff68;border-right:2px solid #b4ff68"></div><div id="relayNeedle" style="position:absolute;top:0;bottom:0;width:5px;background:#fff1b2;box-shadow:0 0 12px #ffb52e"></div></div><button class="primary" id="relayStop" style="width:100%">LOCK RELAY · SPACE</button><p id="relayFeedback" class="hint">Time your press carefully.</p></div><div id="result" class="center hide"></div></div><div class="footer"><div style="flex:1;min-width:180px"><div class="row"><small id="meterLabel">CUTTING PROGRESS</small><small id="meterValue">0%</small></div><div class="progress"><div id="meter"></div></div><div class="row"><small>THERMAL LOAD</small><small id="thermal">0%</small></div><div class="progress heat"><div id="heatMeter"></div></div></div><button id="skip" class="hide">SKIP TO HACK (TEST)</button></div><p class="hint" id="footerHint">Fleeca Bank is a fictional GTA universe brand. This is a standalone FiveM-style game UI demonstration.</p></section></div></main><script>
 const $=id=>document.getElementById(id);const cutSettings={easy:{seams:2,time:115,heat:0.45,cool:1.5,tolerance:29,errors:7,speed:105,hold:0.35},normal:{seams:3,time:115,heat:0.65,cool:1.25,tolerance:24,errors:5,speed:75,hold:0.65},hard:{seams:4,time:110,heat:0.95,cool:1.1,tolerance:18,errors:4,speed:57,hold:0.9},extreme:{seams:5,time:100,heat:1.25,cool:.95,tolerance:13,errors:3,speed:42,hold:1.15}};const hackSettings={easy:{length:3,time:35,errors:3,speed:780},normal:{length:5,time:28,errors:2,speed:620},hard:{length:7,time:24,errors:2,speed:500},extreme:{length:9,time:20,errors:1,speed:400}};
 const paths=["M120 115 L580 115 L580 175 L180 175 L180 230 L530 230 L530 280 L170 280 L170 340 L580 340 L580 390 L120 390 L120 115","M140 124 L555 124 L555 186 L155 186 L155 244 L550 244 L550 302 L145 302 L145 370 L558 370","M120 90 L575 90 L575 404 L120 404 L120 90","M175 100 L500 100 Q590 100 590 190 L590 315 Q590 400 500 400 L175 400 Q105 400 105 315 L105 190 Q105 100 175 100","M115 144 L235 100 L360 145 L485 100 L585 155 L500 235 L590 320 L485 392 L360 350 L235 392 L115 315 L205 230 Z","M160 105 L540 105 L540 155 L215 155 L215 205 L490 205 L490 255 L215 255 L215 305 L540 305 L540 355 L160 355 L160 105"];
-let soundCtx=null,lastCutSound=0;function playSound(kind){try{soundCtx=soundCtx||new (window.AudioContext||window.webkitAudioContext)();if(soundCtx.state==='suspended')soundCtx.resume();const now=soundCtx.currentTime,o=soundCtx.createOscillator(),g=soundCtx.createGain();o.connect(g);g.connect(soundCtx.destination);o.type=kind==='cut'?'sawtooth':kind==='error'?'square':'triangle';let hz={cut:190,plate:100,wire:650,good:800,error:230}[kind]||300,d=kind==='plate'?.45:.13;o.frequency.setValueAtTime(hz,now);o.frequency.exponentialRampToValueAtTime(Math.max(45,hz*.5),now+d);g.gain.setValueAtTime(kind==='cut'?.02:.06,now);g.gain.exponentialRampToValueAtTime(.001,now+d);o.start(now);o.stop(now+d+.02)}catch(e){}}
+
+let soundCtx=null,soundEnabled=true,torchNode=null;
+function audioContext(){
+ if(!soundEnabled)return null;
+ try{soundCtx=soundCtx||new (window.AudioContext||window.webkitAudioContext)();if(soundCtx.state==='suspended')soundCtx.resume();return soundCtx}catch(e){return null}
+}
+function noiseBurst(ctx,duration,volume,cutoff){
+ const n=Math.max(1,Math.floor(ctx.sampleRate*duration)),buffer=ctx.createBuffer(1,n,ctx.sampleRate),data=buffer.getChannelData(0);
+ for(let i=0;i<n;i++)data[i]=(Math.random()*2-1)*(1-i/n);
+ const source=ctx.createBufferSource(),f=ctx.createBiquadFilter(),g=ctx.createGain();
+ source.buffer=buffer;f.type='bandpass';f.frequency.value=cutoff;f.Q.value=.7;
+ g.gain.setValueAtTime(volume,ctx.currentTime);g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+duration);
+ source.connect(f);f.connect(g);g.connect(ctx.destination);source.start();source.stop(ctx.currentTime+duration);
+}
+function beep(ctx,frequency,duration,volume,type='sine',delay=0){
+ const t=ctx.currentTime+delay,o=ctx.createOscillator(),g=ctx.createGain();o.type=type;
+ o.frequency.setValueAtTime(frequency,t);o.frequency.exponentialRampToValueAtTime(Math.max(65,frequency*.68),t+duration);
+ g.gain.setValueAtTime(Math.max(.001,volume),t);g.gain.exponentialRampToValueAtTime(.001,t+duration);
+ o.connect(g);g.connect(ctx.destination);o.start(t);o.stop(t+duration+.005);
+}
+function playSound(kind){
+ const ctx=audioContext();if(!ctx)return;
+ if(kind==='snip'||kind==='wire'){noiseBurst(ctx,.075,.17,2750);beep(ctx,1050,.065,.07,'triangle');beep(ctx,630,.065,.065,'triangle',.055)}
+ else if(kind==='button'){noiseBurst(ctx,.022,.025,2700);beep(ctx,620,.09,.055,'sine');beep(ctx,820,.075,.03,'sine')}
+ else if(kind==='plate'){noiseBurst(ctx,.3,.1,340);beep(ctx,118,.4,.11,'triangle')}
+ else if(kind==='error'){beep(ctx,250,.19,.075,'square');beep(ctx,165,.2,.05,'square',.16)}
+ else if(kind==='good'){beep(ctx,660,.10,.055);beep(ctx,950,.14,.055,'sine',.1)}
+}
+function startTorch(){
+ if(torchNode||!soundEnabled)return;
+ const ctx=audioContext();if(!ctx)return;
+ const len=Math.floor(ctx.sampleRate*.5),buffer=ctx.createBuffer(1,len,ctx.sampleRate),samples=buffer.getChannelData(0);
+ for(let i=0;i<len;i++)samples[i]=Math.random()*2-1;
+ const source=ctx.createBufferSource(),hi=ctx.createBiquadFilter(),lo=ctx.createBiquadFilter(),gain=ctx.createGain();
+ source.buffer=buffer;source.loop=true;
+ hi.type='highpass';hi.frequency.value=450;lo.type='lowpass';lo.frequency.value=3100;
+ source.connect(hi);hi.connect(lo);lo.connect(gain);gain.connect(ctx.destination);
+ gain.gain.setValueAtTime(.001,ctx.currentTime);gain.gain.linearRampToValueAtTime(.075,ctx.currentTime+.09);
+ source.start();torchNode={source,gain,ctx};
+}
+function stopTorch(){
+ if(!torchNode)return;
+ const {source,gain,ctx}=torchNode;torchNode=null;
+ try{gain.gain.cancelScheduledValues(ctx.currentTime);gain.gain.setValueAtTime(Math.max(.001,gain.gain.value),ctx.currentTime);gain.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+.1);source.stop(ctx.currentTime+.12)}catch(e){}
+}
+$('soundToggle').onclick=()=>{soundEnabled=!soundEnabled;$('soundToggle').textContent=soundEnabled?'🔊 SOUND: ON':'🔇 SOUND: OFF';$('soundToggle').setAttribute('aria-pressed',String(soundEnabled));if(!soundEnabled)stopTorch();else playSound('button')};
 let hackRound=0,hackRounds=3,relayRound=0,relayTarget=50,relayPos=0,relayDir=1,relayHits=0,relayLast=0,checkpointHold=0,lastCutAt=0,tipX=0,tipY=0,targetIndex=0,pointerX=-50,pointerY=-50,pointerNear=false,phase='idle',cutCfg,hackCfg,deadline=0,heat=0,errors=0,seamIndex=0,segments=[],progress=0,active=false,lastTick=performance.now(),hackSeq=[],hackInput=0,showing=false,timer=null,playing=false,heatLock=false;
 function desc(){const a=cutSettings[$('cutDifficulty').value],b=hackSettings[$('hackDifficulty').value];$('cutDesc').textContent=`Randomized metal cutouts · ${a.time}s · ${a.errors} errors · ${a.tolerance}px precision · forgiving tracing + thermal pauses`;$('hackDesc').textContent=`${b.length} signal inputs · 2–3 codes · ${b.time}s per code · ${b.errors} mistakes · ${Math.round(b.speed/100)/10}s flash speed`};$('cutDifficulty').onchange=desc;$('hackDifficulty').onchange=desc;desc();
 function show(el){['welcome','cutSvg','wireScreen','hackScreen','relayScreen','result'].forEach(id=>$(id).classList.toggle('hide',id!==el))}function stats(){let remain=Math.max(0,Math.ceil((deadline-performance.now())/1000));$('time').textContent=phase==='idle'?'--':remain+'s';$('seam').textContent=phase==='cut'?'LOCKED':phase==='wires'?'OPEN':phase==='hack'?'COMPLETE':phase==='relay'?'COMPLETE':'0 / 0';$('heatText').textContent=Math.round(heat)+'%';$('errors').textContent=`${errors} / ${phase==='relay'?3:phase==='wires'?wireMaxErrors:phase==='hack'?hackCfg.errors:cutCfg?.errors||0}`;$('heatMeter').style.width=heat+'%';$('thermal').textContent=Math.round(heat)+'%';$('meter').style.width=Math.round(progress*100)+'%';$('meterValue').textContent=Math.round(progress*100)+'%'}function setStatus(t){$('status').textContent=t}
@@ -68,14 +120,14 @@ function drawSeam(){
  updateMarker();stats();
 }
 function updateMarker(){let i=Math.min(segments.length-1,Math.floor(progress*(segments.length-1)));let p=segments[i]||{x:-50,y:-50};if(!active){$('cutter').setAttribute('cx',p.x);$('cutter').setAttribute('cy',p.y);}const trace=$('cutPaths').querySelector('.trace');if(trace){let l=trace.getTotalLength();trace.style.strokeDashoffset=l*(1-progress)}}function makeBolts(){let g=$('bolts');g.innerHTML='';for(let x of [55,645])for(let y of [55,445]){let c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('cx',x);c.setAttribute('cy',y);c.setAttribute('r',10);c.setAttribute('class','bolt');g.append(c)}}
-function start(){clearInterval(timer);cutCfg={...cutSettings[$('cutDifficulty').value]};hackCfg={...hackSettings[$('hackDifficulty').value]};phase='cut';plateOrder=Array.from({length:cutCfg.seams},(_,i)=>plateShapes[i%plateShapes.length]).sort(()=>Math.random()-.5);heat=0;errors=0;seamIndex=0;active=false;heatLock=false;deadline=performance.now()+cutCfg.time*1000;lastTick=performance.now();$('stageTitle').textContent='STAGE 01 / ACCESS PANEL CUTTING';setStatus('THERMITE ACTIVE');show('cutSvg');$('skip').classList.remove('hide');makeBolts();drawSeam();timer=setInterval(tick,60)}function fail(msg){phase='end';active=false;clearInterval(timer);setStatus('BREACH FAILED');$('stageTitle').textContent='ACCESS DENIED';$('instruction').textContent='The security breach was unsuccessful.';$('result').innerHTML=`<div style="font-size:54px">⛔</div><h2>${msg}</h2><p>The breach failed. Adjust the difficulty and try again.</p><button onclick="start()">RETRY BREACH</button>`;show('result');$('skip').classList.add('hide')}function success(){phase='end';clearInterval(timer);setStatus('ACCESS GRANTED');$('stageTitle').textContent='BREACH COMPLETE';$('instruction').textContent='All four stages completed.';$('result').innerHTML='<div style="font-size:54px">🔓</div><h2 class="ok">ACCESS GRANTED</h2><p>Armored panel cutting, wire isolation, terminal override and relay stabilization completed successfully.</p><button onclick="start()">PLAY AGAIN</button>';show('result');$('skip').classList.add('hide');progress=1;stats()}
+function start(){stopTorch();clearInterval(timer);cutCfg={...cutSettings[$('cutDifficulty').value]};hackCfg={...hackSettings[$('hackDifficulty').value]};phase='cut';plateOrder=Array.from({length:cutCfg.seams},(_,i)=>plateShapes[i%plateShapes.length]).sort(()=>Math.random()-.5);heat=0;errors=0;seamIndex=0;active=false;heatLock=false;deadline=performance.now()+cutCfg.time*1000;lastTick=performance.now();$('stageTitle').textContent='STAGE 01 / ACCESS PANEL CUTTING';setStatus('THERMITE ACTIVE');show('cutSvg');$('skip').classList.remove('hide');makeBolts();drawSeam();timer=setInterval(tick,60)}function fail(msg){stopTorch();phase='end';active=false;clearInterval(timer);setStatus('BREACH FAILED');$('stageTitle').textContent='ACCESS DENIED';$('instruction').textContent='The security breach was unsuccessful.';$('result').innerHTML=`<div style="font-size:54px">⛔</div><h2>${msg}</h2><p>The breach failed. Adjust the difficulty and try again.</p><button onclick="start()">RETRY BREACH</button>`;show('result');$('skip').classList.add('hide')}function success(){stopTorch();phase='end';clearInterval(timer);setStatus('ACCESS GRANTED');$('stageTitle').textContent='BREACH COMPLETE';$('instruction').textContent='All four stages completed.';$('result').innerHTML='<div style="font-size:54px">🔓</div><h2 class="ok">ACCESS GRANTED</h2><p>Armored panel cutting, wire isolation, terminal override and relay stabilization completed successfully.</p><button onclick="start()">PLAY AGAIN</button>';show('result');$('skip').classList.add('hide');progress=1;stats()}
 function tick(){let now=performance.now(),dt=Math.min(.15,(now-lastTick)/1000);lastTick=now;if(!['cut','wires','hack','relay'].includes(phase))return;if(now>=deadline){fail('TIME EXPIRED');return}if(phase==='relay'){relayPos+=relayDir*dt*relaySpeed();if(relayPos>=100){relayPos=100;relayDir=-1}if(relayPos<=0){relayPos=0;relayDir=1}updateRelay()}
 if(phase==='cut'){
   // Progress is ONLY earned by physically dragging along the seam.
   // Holding the mouse stationary never advances the cut.
   if(active&&!heatLock&&pointerNear)heat=Math.min(100,heat+cutCfg.heat*dt*20);
   else heat=Math.max(0,heat-cutCfg.cool*dt*20);
-  if(heat>=100){active=false;pointerNear=false;heatLock=true;errors++;$('instruction').textContent='OVERHEATED! Release and cool below 40%. One error recorded.';if(errors>=cutCfg.errors){fail('CUTTER OVERHEATED');return}}
+  if(heat>=100){stopTorch();active=false;pointerNear=false;heatLock=true;errors++;$('instruction').textContent='OVERHEATED! Release and cool below 40%. One error recorded.';if(errors>=cutCfg.errors){fail('CUTTER OVERHEATED');return}}
   if(heatLock&&heat<40)heatLock=false;
 }
 stats()}
@@ -95,11 +147,11 @@ function pointerPos(e){const pt=$('cutSvg').createSVGPoint();pt.x=e.clientX;pt.y
    if(d<best){best=d;nearest=j}
  }
  pointerNear=best<=cutCfg.tolerance;
- if(pointerNear&&moved>=0.6&&nearest>current){if(performance.now()-lastCutSound>110){playSound('cut');lastCutSound=performance.now()}
+ if(pointerNear&&moved>=0.6&&nearest>current){startTorch()
    progress=Math.min(1,nearest/(segments.length-1));
    updateMarker();
    if(progress>=.999){
-     seamIndex++;active=false;pointerNear=false;heat=Math.max(0,heat-22);
+     stopTorch();seamIndex++;active=false;pointerNear=false;heat=Math.max(0,heat-22);
      dropArmor(()=>{if(seamIndex>=cutCfg.seams){startWires();return}drawSeam();$('instruction').textContent='PANEL REMOVED! Follow the newly exposed cutting outline.';});
      return;
    }
@@ -107,59 +159,119 @@ function pointerPos(e){const pt=$('cutSvg').createSVGPoint();pt.x=e.clientX;pt.y
  $('instruction').textContent=pointerNear?'DRAG ALONG THE SEAM — Stationary holding does not cut. Release to cool.':'RETURN TO THE CUT FRONT — Stay close to the orange line.';
  stats();
 }
-$('cutSvg').addEventListener('pointerdown',e=>{if(phase!=='cut'||heatLock)return;let p=pointerPos(e),at=segments[Math.floor(progress*(segments.length-1))];if(distance(p,at)<cutCfg.tolerance*1.45){active=true;lastCutAt=performance.now();$('cutSvg').setPointerCapture(e.pointerId);cutMove(e)}else{$('instruction').textContent='Start at the bright cutting point, then drag along the orange path.'}});$('cutSvg').addEventListener('pointermove',cutMove);['pointerup','pointercancel','lostpointercapture'].forEach(evt=>$('cutSvg').addEventListener(evt,()=>{active=false;pointerNear=false;targetIndex=Math.floor(progress*(segments.length-1));updateMarker()}));
+$('cutSvg').addEventListener('pointerdown',e=>{if(phase!=='cut'||heatLock)return;let p=pointerPos(e),at=segments[Math.floor(progress*(segments.length-1))];if(distance(p,at)<cutCfg.tolerance*1.45){active=true;lastCutAt=performance.now();$('cutSvg').setPointerCapture(e.pointerId);cutMove(e)}else{$('instruction').textContent='Start at the bright cutting point, then drag along the orange path.'}});$('cutSvg').addEventListener('pointermove',cutMove);['pointerup','pointercancel','lostpointercapture'].forEach(evt=>$('cutSvg').addEventListener(evt,()=>{stopTorch();active=false;pointerNear=false;targetIndex=Math.floor(progress*(segments.length-1));updateMarker()}));
+
 
 const wireColors=['#e8b448','#e35d53','#5eafe7','#78d86b','#c58ce9','#e5e9ed'];
-let wireOrder=[],wireIndex=0,wireMaxErrors=3,wireDrag=null,wirePaths=[];
+const wireColorNames=['AMBER','RED','BLUE','GREEN','PURPLE','WHITE'];
+let wireOrder=[],wireIndex=0,wireMaxErrors=3,wireBusy=false,wirePaths=[],wirePulse=null,wirePulseStart=0,wireUnsafe=false,wireRaf=0,wireUiMode='';
 function startWires(){
- phase='wires';active=false;heat=0;errors=0;progress=0;wireIndex=0;
+ stopTorch();phase='wires';active=false;heat=0;errors=0;progress=0;wireIndex=0;wireBusy=false;
  wireMaxErrors=({easy:5,normal:3,hard:2,extreme:1})[$('cutDifficulty').value];
- let count=({easy:3,normal:4,hard:5,extreme:6})[$('cutDifficulty').value];
+ const count=({easy:3,normal:4,hard:5,extreme:6})[$('cutDifficulty').value];
  wireOrder=Array.from({length:6},(_,i)=>i).sort(()=>Math.random()-.5).slice(0,count);
- deadline=performance.now()+({easy:65,normal:55,hard:45,extreme:38})[$('cutDifficulty').value]*1000;
- $('stageTitle').textContent='STAGE 02 / WIRE ISOLATION';setStatus('CIRCUITS EXPOSED');
- $('meterLabel').textContent='WIRES SEVERED';show('wireScreen');renderWires();stats();
+ deadline=performance.now()+({easy:70,normal:60,hard:52,extreme:45})[$('cutDifficulty').value]*1000;
+ $('stageTitle').textContent='STAGE 02 / LIVE WIRE SNIPPING';setStatus('LIVE CIRCUITS');
+ $('meterLabel').textContent='CIRCUITS DISCONNECTED';show('wireScreen');renderWires();stats();
+ if(wireRaf)cancelAnimationFrame(wireRaf);wireRaf=requestAnimationFrame(animateWireElectricity);
 }
-function wireCurve(i){
- let y=80+i*37;
- return 'M85 '+y+' C205 '+(y-27)+' 245 '+(y+27)+' 330 '+y+' S480 '+(y-18)+' 575 '+y;
+function wireCurve(i){const y=80+i*37;return 'M85 '+y+' C205 '+(y-27)+' 245 '+(y+27)+' 330 '+y+' S480 '+(y-18)+' 575 '+y}
+function svgElement(tag,attrs={}){
+ const el=document.createElementNS('http://www.w3.org/2000/svg',tag);
+ for(const [k,v] of Object.entries(attrs))el.setAttribute(k,String(v));return el;
 }
-
-let wireBusy=false;
 function renderWires(){
- let g=$('wireArt');g.innerHTML='';wirePaths=[];wireBusy=false;
- const ns='http://www.w3.org/2000/svg';
+ const g=$('wireArt');g.innerHTML='';wirePaths=[];wireBusy=false;wireUiMode='';
+ const target=wireOrder[wireIndex];
  for(let i=0;i<6;i++){
-  let target=i===wireOrder[wireIndex],done=wireOrder.slice(0,wireIndex).includes(i);
-  let path=document.createElementNS(ns,'path');
-  path.setAttribute('d',wireCurve(i));path.setAttribute('fill','none');path.setAttribute('stroke',wireColors[i]);
-  path.setAttribute('stroke-width',target?'16':'11');path.setAttribute('stroke-linecap','round');
-  path.setAttribute('opacity',done?'.25':target?'1':'.65');path.style.cursor='pointer';
-  path.style.filter=target?'drop-shadow(0 0 11px '+wireColors[i]+') drop-shadow(0 0 5px white)':'none';
-  if(done)path.setAttribute('stroke-dasharray','190 60 190 60');
-  path.addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();cutWire(i)});
-  g.append(path);wirePaths.push(path);
-  for(let x of [73,586]){let circle=document.createElementNS(ns,'circle');circle.setAttribute('cx',x);circle.setAttribute('cy',80+i*37);circle.setAttribute('r','11');circle.setAttribute('fill','#83979c');circle.setAttribute('stroke','#18252b');circle.setAttribute('stroke-width','4');g.append(circle)}
-  let t=document.createElementNS(ns,'text');t.setAttribute('x','48');t.setAttribute('y',84+i*37);t.setAttribute('font-size','12');t.setAttribute('font-weight','bold');t.setAttribute('fill','#b4c6c9');t.textContent=String(i+1).padStart(2,'0');g.append(t);
-  if(target){let label=document.createElementNS(ns,'text');label.setAttribute('x','330');label.setAttribute('y',65+i*37);label.setAttribute('font-size','14');label.setAttribute('font-weight','900');label.setAttribute('text-anchor','middle');label.setAttribute('fill','#fff5c5');label.style.pointerEvents='none';label.textContent='✂ CLICK THE GLOWING WIRE';g.append(label)}
+  const live=i===target,done=wireOrder.slice(0,wireIndex).includes(i);
+  const y=80+i*37;
+  const path=svgElement('path',{d:wireCurve(i),fill:'none',stroke:wireColors[i],'stroke-width':live?14:10,'stroke-linecap':'round',opacity:done?.3:live?1:.63});
+  path.style.filter=live?'drop-shadow(0 0 9px '+wireColors[i]+')':'none';g.append(path);wirePaths[i]=path;
+  // Keep the complete wire clickable, rather than relying on a thin SVG stroke.
+  const hit=svgElement('path',{d:wireCurve(i),fill:'none',stroke:'transparent','stroke-width':29,'pointer-events':'stroke'});
+  hit.style.cursor='crosshair';hit.addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();snipWire(i)});g.append(hit);
+  for(const x of [73,586])g.append(svgElement('circle',{cx:x,cy:y,r:10,fill:'#82969d',stroke:'#192931','stroke-width':4,'pointer-events':'none'}));
+  const number=svgElement('text',{x:48,y:y+5,'font-size':12,'font-weight':'900',fill:'#a7bdc5','pointer-events':'none'});number.textContent=String(i+1).padStart(2,'0');g.append(number);
+  if(done){
+   const cover=svgElement('rect',{x:313,y:y-13,width:34,height:26,fill:'#101d24','pointer-events':'none'});g.append(cover);
+   const a=svgElement('path',{d:'M308 '+(y-12)+' l-11 -10 M352 '+(y+12)+' l11 10',stroke:wireColors[i],'stroke-width':4,'pointer-events':'none'});g.append(a);
+  }
+  if(live){
+   const marker=svgElement('rect',{x:306,y:y-19,width:48,height:38,rx:10,fill:'#9fe06919',stroke:'#c6fa8d','stroke-width':2,'stroke-dasharray':'5 4'});
+   marker.style.cursor='pointer';
+   marker.addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();snipWire(i)});
+   g.append(marker);
+   const scissors=svgElement('text',{x:329,y:y+7,'text-anchor':'middle','font-size':25,'font-weight':'900',fill:'#f5ffde','pointer-events':'none'});
+   scissors.textContent='✂';g.append(scissors);
+   const click=svgElement('rect',{x:291,y:y-22,width:78,height:44,rx:10,fill:'transparent','pointer-events':'all'});
+   click.style.cursor='pointer';click.addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();snipWire(i)});g.append(click);
+   const label=svgElement('text',{x:330,y:y-24,'text-anchor':'middle','font-size':13,'font-weight':'900',fill:'#f4ffd4','pointer-events':'none'});
+   label.textContent='✂ CUT HERE';g.append(label);
+  }
  }
- $('wireStep').textContent='SECURITY CIRCUIT OVERRIDE';
- $('wireStatus').textContent='CLICK WIRE '+String(wireOrder[wireIndex]+1).padStart(2,'0');
- $('wireHint').textContent='CLICK or TAP the glowing '+['AMBER','RED','BLUE','GREEN','PURPLE','WHITE'][wireOrder[wireIndex]]+' wire to snip it. No dragging required.';
+ const spark=svgElement('g',{'pointer-events':'none'});
+ spark.style.filter='drop-shadow(0 0 8px #42d6ff) drop-shadow(0 0 13px #a1f5ff)';
+ const glow=svgElement('circle',{r:15,fill:'#19bbff',opacity:.48});
+ const core=svgElement('circle',{r:7,fill:'#efffff',stroke:'#52d8ff','stroke-width':4});
+ spark.append(glow,core);g.append(spark);wirePulse=spark;
+ wirePulseStart=performance.now();
+ $('wireStep').textContent='TARGET: '+wireColorNames[target]+' WIRE';
+ $('wireHint').textContent='WATCH THE BLUE ELECTRIC SPARK. Snip the '+wireColorNames[target]+' wire at the scissors marker when the spark is away.';
+ $('wireSnip').textContent='✂ SNIP '+wireColorNames[target]+' WIRE';
+ updateWireElectricity(performance.now());
 }
-function cutWire(i){
- if(phase!=='wires'||wireBusy||wireOrder.slice(0,wireIndex).includes(i))return;
+function updateWireElectricity(now){
+ if(phase!=='wires'||wireBusy||!wirePulse)return;
+ const speed=({easy:3400,normal:2750,hard:2200,extreme:1750})[$('cutDifficulty').value];
+ const t0=((now-wirePulseStart)%speed)/speed;
+ const fraction=t0<=.5?t0*2:2-t0*2;
+ const path=wirePaths[wireOrder[wireIndex]];
+ if(!path)return;
+ const len=path.getTotalLength(),pt=path.getPointAtLength(fraction*len);
+ wirePulse.setAttribute('transform','translate('+pt.x+' '+pt.y+')');
+ // The scissors cut position is in the center of the wire.
+ wireUnsafe=Math.abs(fraction-.5)<.19;
+ const mode=wireUnsafe?'live':'safe';
+ if(mode!==wireUiMode){
+  wireUiMode=mode;
+  $('wireTiming').className='wire-timing '+mode;
+  $('wireTiming').textContent=wireUnsafe?'⚡ LIVE CURRENT AT CUT POINT — WAIT':'✂ CUT POINT CLEAR — SNIP NOW!';
+  $('wireStatus').textContent=wireUnsafe?'LIVE — WAIT':'SAFE — SNIP NOW';
+  $('wireSnip').classList.toggle('wire-live',wireUnsafe);
+ }
+}
+function animateWireElectricity(now){
+ if(phase!=='wires'){wireRaf=0;return}
+ updateWireElectricity(now);wireRaf=requestAnimationFrame(animateWireElectricity);
+}
+function snipWire(i){
+ if(phase!=='wires'||wireBusy)return;
+ updateWireElectricity(performance.now());
+ if(wireOrder.slice(0,wireIndex).includes(i))return;
  if(i!==wireOrder[wireIndex]){
-  errors++;playSound('error');$('wireHint').textContent='WRONG WIRE! Click the brightly glowing wire instead.';
-  wirePaths[i].style.filter='drop-shadow(0 0 14px red)';
-  if(errors>=wireMaxErrors){fail('ALARM CIRCUIT TRIPPED');return}
-  stats();return;
+  errors++;playSound('error');$('wireHint').textContent='WRONG WIRE! Follow the glowing target and scissors marker.';
+ }else if(wireUnsafe){
+  errors++;playSound('error');$('wireHint').textContent='LIVE CURRENT! The spark was crossing the cut point. Wait for CLEAR.';
+ }else{
+  wireBusy=true;playSound('snip');
+  $('wireTiming').className='wire-timing safe';$('wireTiming').textContent='✂ WIRE SNIPPED — CIRCUIT DISCONNECTED';
+  $('wireStatus').textContent='CIRCUIT SEVERED';
+  $('wireHint').textContent='Clean cut! Isolating the next circuit...';
+  // Split the cut wire visually at the scissors mark.
+  const path=wirePaths[i];path.setAttribute('stroke-dasharray','210 60 210 60');
+  path.style.opacity='.35';
+  if(wirePulse)wirePulse.style.opacity='0';
+  setTimeout(()=>{if(phase!=='wires')return;wireIndex++;progress=wireIndex/wireOrder.length;
+   if(wireIndex>=wireOrder.length){startHack();return}
+   renderWires();stats();
+  },440);
+  return;
  }
- wireBusy=true;playSound('wire');let path=wirePaths[i];
- path.style.transition='opacity .28s';path.style.opacity='.2';path.setAttribute('stroke-dasharray','210 70 210 70');
- $('wireStatus').textContent='WIRE SEVERED';$('wireHint').textContent='CIRCUIT DISCONNECTED — isolating next connection...';
- setTimeout(()=>{if(phase!=='wires')return;wireIndex++;progress=wireIndex/wireOrder.length;if(wireIndex>=wireOrder.length){startHack();return}renderWires();stats()},360);
+ if(errors>=wireMaxErrors){fail('SECURITY CIRCUIT TRIPPED');return}
+ stats();
 }
+$('wireSnip').addEventListener('click',()=>{if(phase==='wires')snipWire(wireOrder[wireIndex])});
 function relaySpeed(){return ({easy:55,normal:78,hard:100,extreme:124})[$('hackDifficulty').value]}
 function updateRelay(){$('relayNeedle').style.left=`calc(${relayPos}% - 2px)`;$('relayZone').style.left=`${relayTarget-relayWidth()/2}%`}
 function relayWidth(){return ({easy:24,normal:18,hard:14,extreme:10})[$('hackDifficulty').value]}
@@ -167,8 +279,8 @@ function startRelay(){phase='relay';relayRound=0;relayHits=0;errors=0;progress=0
 function newRelay(){relayPos=0;relayDir=1;relayTarget=30+Math.random()*40;$('relayCount').textContent=`RELAY ${relayRound+1} / 3`;$('relayFeedback').textContent='Hit the green zone to lock this relay.';updateRelay()}
 function lockRelay(){if(phase!=='relay')return;if(Math.abs(relayPos-relayTarget)<=relayWidth()/2){playSound('good');relayRound++;progress=relayRound/3;if(relayRound>=3){success();return}newRelay()}else{playSound('error');errors++;$('relayFeedback').textContent='Missed! Wait for the next pass.';if(errors>=3){fail('RELAY LOCK FAILED');return}}stats()}
 $('relayStop').onclick=lockRelay;document.addEventListener('keydown',e=>{if(e.code==='Space'&&phase==='relay'&&!e.repeat){e.preventDefault();lockRelay()}});
-function startHack(){phase='hack';hackRound=0;hackRounds=2+Math.floor(Math.random()*2);active=false;heat=0;errors=0;progress=0;deadline=performance.now()+(hackCfg.time*hackRounds+12)*1000;show('hackScreen');$('skip').classList.add('hide');$('stageTitle').textContent='STAGE 03 / SECURITY HACK';$('instruction').textContent='Memorize the illuminated sequence and repeat it.';setStatus('TERMINAL OVERRIDE');$('meterLabel').textContent='HACK PROGRESS';$('terminalReadout').textContent='ENCRYPTED SEQUENCE LOADING';$('hackGrid').innerHTML='';for(let i=0;i<16;i++){let b=document.createElement('button');b.className='tile';b.textContent=String(i+1).padStart(2,'0');b.onclick=()=>tileClick(i);$('hackGrid').append(b)}nextHackRound();$('hackState').textContent='MEMORIZE THE SIGNAL';$('hackHint').textContent='Watch the glowing nodes. Input begins when the sequence finishes.';$('hackProgress').textContent=`Code ${hackRound+1} of ${hackRounds} · ${hackSeq.length} inputs`;stats()}
+function startHack(){if(wireRaf){cancelAnimationFrame(wireRaf);wireRaf=0}phase='hack';hackRound=0;hackRounds=2+Math.floor(Math.random()*2);active=false;heat=0;errors=0;progress=0;deadline=performance.now()+(hackCfg.time*hackRounds+12)*1000;show('hackScreen');$('skip').classList.add('hide');$('stageTitle').textContent='STAGE 03 / SECURITY HACK';$('instruction').textContent='Memorize the illuminated sequence and repeat it.';setStatus('TERMINAL OVERRIDE');$('meterLabel').textContent='HACK PROGRESS';$('terminalReadout').textContent='ENCRYPTED SEQUENCE LOADING';$('hackGrid').innerHTML='';for(let i=0;i<16;i++){let b=document.createElement('button');b.className='tile';b.textContent=String(i+1).padStart(2,'0');b.onclick=()=>tileClick(i);$('hackGrid').append(b)}nextHackRound();$('hackState').textContent='MEMORIZE THE SIGNAL';$('hackHint').textContent='Watch the glowing nodes. Input begins when the sequence finishes.';$('hackProgress').textContent=`Code ${hackRound+1} of ${hackRounds} · ${hackSeq.length} inputs`;stats()}
 function nextHackRound(){$('terminalReadout').textContent=`ACCESS CODE ${hackRound+1} OF ${hackRounds} · READ ONLY`;hackSeq=Array.from({length:hackCfg.length},()=>Math.floor(Math.random()*16));hackInput=0;showing=true;playing=false;$('hackState').textContent=`MEMORIZE CODE ${hackRound+1} / ${hackRounds}`;$('hackHint').textContent='Watch the highlighted nodes, then enter them in order.';$('hackProgress').textContent=`Code ${hackRound+1} of ${hackRounds} · ${hackSeq.length} inputs`;playSequence()}
-async function playSequence(){playing=true;const tiles=[...$('hackGrid').children];for(let i=0;i<hackSeq.length;i++){if(phase!=='hack')return;await sleep(210);if(phase!=='hack')return;tiles[hackSeq[i]].classList.add('lit');await sleep(hackCfg.speed);tiles[hackSeq[i]].classList.remove('lit')}if(phase!=='hack')return;playing=false;showing=false;$('terminalReadout').textContent='ENTER ACCESS SEQUENCE';$('hackState').textContent='REPEAT THE SIGNAL';$('hackHint').textContent='Tap the tiles in the same order.'}function sleep(ms){return new Promise(r=>setTimeout(r,ms))}function tileClick(i){if(phase!=='hack'||showing||playing)return;let tile=$('hackGrid').children[i];if(i===hackSeq[hackInput]){playSound('good');tile.classList.add('good');setTimeout(()=>tile.classList.remove('good'),250);hackInput++;progress=(hackRound+hackInput/hackSeq.length)/hackRounds;$('hackProgress').textContent=`${hackInput} / ${hackSeq.length} correct`;if(hackInput>=hackSeq.length){hackRound++;if(hackRound>=hackRounds){startRelay();return}nextHackRound();return}}else{playSound('error');errors++;tile.classList.add('bad');setTimeout(()=>tile.classList.remove('bad'),350);$('hackHint').textContent='Incorrect node! Restart the sequence.';hackInput=0;progress=hackRound/hackRounds;if(errors>=hackCfg.errors){fail('HACK FAILED');return}}stats()}
-$('start').onclick=start;$('reset').onclick=()=>{clearInterval(timer);phase='idle';active=false;heat=0;errors=0;progress=0;setStatus('STANDBY');$('stageTitle').textContent='AWAITING OPERATOR';$('instruction').textContent='Choose your difficulty and start.';$('skip').classList.add('hide');show('welcome');stats()};$('skip').onclick=startHack;stats();
+async function playSequence(){playing=true;const tiles=[...$('hackGrid').children];for(let i=0;i<hackSeq.length;i++){if(phase!=='hack')return;await sleep(210);if(phase!=='hack')return;tiles[hackSeq[i]].classList.add('lit');await sleep(hackCfg.speed);tiles[hackSeq[i]].classList.remove('lit')}if(phase!=='hack')return;playing=false;showing=false;$('terminalReadout').textContent='ENTER ACCESS SEQUENCE';$('hackState').textContent='REPEAT THE SIGNAL';$('hackHint').textContent='Tap the tiles in the same order.'}function sleep(ms){return new Promise(r=>setTimeout(r,ms))}function tileClick(i){if(phase!=='hack'||showing||playing)return;let tile=$('hackGrid').children[i];if(i===hackSeq[hackInput]){playSound('button');tile.classList.add('good');setTimeout(()=>tile.classList.remove('good'),250);hackInput++;progress=(hackRound+hackInput/hackSeq.length)/hackRounds;$('hackProgress').textContent=`${hackInput} / ${hackSeq.length} correct`;if(hackInput>=hackSeq.length){hackRound++;if(hackRound>=hackRounds){startRelay();return}nextHackRound();return}}else{playSound('error');errors++;tile.classList.add('bad');setTimeout(()=>tile.classList.remove('bad'),350);$('hackHint').textContent='Incorrect node! Restart the sequence.';hackInput=0;progress=hackRound/hackRounds;if(errors>=hackCfg.errors){fail('HACK FAILED');return}}stats()}
+$('start').onclick=start;$('reset').onclick=()=>{stopTorch();if(wireRaf){cancelAnimationFrame(wireRaf);wireRaf=0}clearInterval(timer);phase='idle';active=false;heat=0;errors=0;progress=0;setStatus('STANDBY');$('stageTitle').textContent='AWAITING OPERATOR';$('instruction').textContent='Choose your difficulty and start.';$('skip').classList.add('hide');show('welcome');stats()};$('skip').onclick=startHack;stats();
 </script></body></html>
