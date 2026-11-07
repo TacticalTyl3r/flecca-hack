@@ -37,7 +37,12 @@
 .cut-svg.cut-slip .frame{stroke:#ff5261!important}
 #sparkLayer{pointer-events:none;mix-blend-mode:screen}
 #sparkLayer line{filter:drop-shadow(0 0 2.5px #ffb137)}
-</style></head><body><main class="wrap"><header class="top"><div><div class="brand"><span class="brand-mark">F</span><span class="brand-word">FLEECA <em>BANK</em></span></div><div class="eyebrow">SECURITY OPERATIONS // UNAUTHORIZED ACCESS</div><h1>SECURITY BREACH</h1><div class="sub">Four-stage interactive browser prototype · Mouse and touch supported</div></div><div class="pill">SYSTEM STATUS: <span id="status">STANDBY</span></div></header><div class="layout"><aside class="panel"><h2>⚙ Difficulty Configuration</h2><label class="label" for="cutDifficulty">THERMITE CUTTING</label><select id="cutDifficulty"><option value="easy">Easy</option><option value="normal" selected>Normal</option><option value="hard">Hard</option><option value="extreme">Extreme</option></select><div class="desc" id="cutDesc"></div><label class="label" for="hackDifficulty">SECURITY HACK</label><select id="hackDifficulty"><option value="easy">Easy</option><option value="normal" selected>Normal</option><option value="hard">Hard</option><option value="extreme">Extreme</option></select><div class="desc" id="hackDesc"></div><button class="primary" id="start">START BREACH</button><button id="reset" style="width:100%;margin-top:9px">RESET DEMO</button><button id="soundToggle" type="button" aria-pressed="true" style="width:100%;margin-top:9px">🔊 SOUND: ON</button><p class="hint">Settings apply when starting a new run. Stage 1: trace the glowing outline to release each metal cutout. The cutter follows your mouse instantly. Stay on the orange seam while dragging: moving too far off the line counts as an error. Holding still will not cut. Release to cool. Stage 2: snip the highlighted wire exactly when the electrical pulse reaches the center scissors. Stage 3: complete 2–3 terminal codes. Stage 4: stabilize three security relays.</p></aside><section class="panel"><div class="stage"><b id="stageTitle">AWAITING OPERATOR</b><span id="instruction">Choose your difficulty and start.</span></div><div class="stats"><div class="stat"><small>TIME LEFT</small><b id="time">--</b></div><div class="stat"><small>ACCESS</small><b id="seam">0 / 0</b></div><div class="stat"><small>HEAT</small><b id="heatText">0%</b></div><div class="stat"><small>ERRORS</small><b id="errors">0 / 0</b></div></div><div class="view" id="view"><div class="center" id="welcome"><div style="font-size:58px">🔥</div><h2>Fleeca Vault Access Panel</h2><p>Cut through reinforced armor layers, expose and sever the correct security wires, override the keypad, and stabilize the lock relays.</p><p class="warning">Select difficulty settings and press Start Breach.</p></div><svg id="cutSvg" class="cut-svg hide" viewBox="0 0 700 500" aria-label="Thermite cutting panel"><defs><pattern id="metal" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M0 22L22 0" stroke="#29414b" stroke-width="1"/></pattern></defs><rect x="27" y="24" width="646" height="452" rx="24" class="frame"/><rect x="42" y="39" width="616" height="422" rx="18" fill="url(#metal)" stroke="#20343e" stroke-width="2"/><rect x="80" y="68" width="540" height="364" rx="12" class="inner"/><g id="doorHardware"><rect x="95" y="83" width="510" height="336" rx="9" fill="#18262d" stroke="#74818a" stroke-width="5"/><rect x="111" y="99" width="478" height="304" rx="5" fill="#26353c" stroke="#111a21" stroke-width="8"/><rect x="123" y="111" width="454" height="280" rx="4" fill="url(#metal)" stroke="#6b7a80" stroke-width="2"/><path d="M125 148 H575 M125 352 H575" stroke="#64717a" stroke-width="6" opacity=".75"/><rect x="141" y="160" width="418" height="178" rx="7" fill="#111d24" stroke="#89969c" stroke-width="7"/><rect x="154" y="172" width="392" height="154" rx="3" fill="#28373e" stroke="#34444b" stroke-width="5"/><g fill="#a6b4b9" stroke="#18272d" stroke-width="3"><circle cx="147" cy="134" r="7"/><circle cx="553" cy="134" r="7"/><circle cx="147" cy="370" r="7"/><circle cx="553" cy="370" r="7"/></g><g id="layerBadge"><rect x="257" y="42" width="186" height="35" rx="5" fill="#101a1f" stroke="#9bc63e" stroke-width="2"/><text id="layerText" x="350" y="64" text-anchor="middle" font-size="13" font-weight="800" letter-spacing="2" fill="#c3e87b">ARMOR LAYER 01</text></g><g transform="translate(575 205)"><rect width="70" height="106" rx="7" fill="#0d171c" stroke="#64767b" stroke-width="3"/><circle cx="35" cy="32" r="20" fill="#273b40" stroke="#9fc945" stroke-width="3"/><path d="M25 32h20M35 22v20" stroke="#a4c7c7" stroke-width="4"/><rect x="17" y="71" width="36" height="8" rx="3" fill="#98d54b"/><rect x="17" y="85" width="24" height="5" rx="2" fill="#4b626a"/></g></g><g id="bolts"></g><g id="armorLayers"></g><g id="cutPaths"></g><g id="sparkLayer" pointer-events="none"></g><circle id="cutter" r="9" class="cursor" cx="-50" cy="-50"/></svg><div id="wireScreen" class="hide" style="width:100%;padding:12px;text-align:center"><div class="eyebrow">STAGE 02 // EXPOSED SECURITY CIRCUITS</div><h2 style="margin:9px">Cut the Alarm Wires</h2><p class="hint" id="wireHint">Wait for the electric spark to reach the center scissors, then snip.</p><div id="wireTiming" class="wire-timing safe" role="status">WAIT FOR THE SPARK TO REACH THE CENTER</div><div class="wire-module"><div class="wire-module-top"><span>FLEECA · SECURITY JUNCTION</span><span id="wireStep">CIRCUIT 1 / 3</span></div><svg id="wireSvg" viewBox="0 0 660 340" aria-label="Security wires cutting minigame" style="width:100%;touch-action:none;display:block"><rect x="17" y="18" width="626" height="304" rx="14" fill="#14232a" stroke="#70848b" stroke-width="8"/><rect x="42" y="43" width="576" height="254" rx="8" fill="#0b151c" stroke="#354c55" stroke-width="3"/><g id="wireArt"></g></svg><div class="wire-module-bottom"><span>⚡ LIVE SECURITY CIRCUITS</span><span id="wireStatus">WAIT FOR SAFE MOMENT</span></div></div><button id="wireSnip" class="primary wire-snip" type="button">✂ SNIP AT THE MARKED SPOT</button><p class="hint">The glowing wire is your target. <strong>Snip when the electric spark reaches the scissors marker in the center.</strong> Click the scissors or press SNIP exactly when the indicator turns green. Missing the moment triggers an alarm strike.</p></div><div id="hackScreen" class="hide" style="width:100%;text-align:center;padding:15px"><div class="eyebrow">FLEECA BANK // ACCESS CONTROL TERMINAL</div><div class="eyebrow" id="hackState">MEMORIZE THE SIGNAL</div><h2 style="margin:8px">Vault Door Keypad Override</h2><div class="terminal-screen"><span class="terminal-led"></span><span id="terminalReadout">SECURITY LOCK ENGAGED</span><span class="terminal-led"></span></div><p class="hint" id="hackHint">Watch the tiles illuminate, then repeat the sequence.</p><div class="keypad-housing"><div class="keypad-top"><span>FLEECA SECURE ENTRY</span><span>MODEL FLC-16</span></div><div class="hack-grid" id="hackGrid"></div><div class="keypad-bottom"><span>● ENCRYPTED INPUT</span><span>AUTHORIZED PERSONNEL ONLY</span></div></div><div id="hackProgress" class="sub"></div></div><div id="relayScreen" class="hide" style="width:100%;padding:28px;max-width:650px;margin:auto;text-align:center"><div class="eyebrow">STAGE 04 // SECURITY RELAY</div><h2>Stabilize the Lock Circuit</h2><p class="hint">Stop the moving indicator inside the green zone. Three successful locks complete the breach.</p><div id="relayCount" style="margin:18px;color:#b6ec64;font-weight:800">RELAY 1 / 3</div><div id="relayTrack" style="height:42px;position:relative;border:2px solid #567b31;border-radius:12px;background:#111e26;overflow:hidden;margin:28px 0"><div id="relayZone" style="position:absolute;top:0;bottom:0;width:18%;background:#76d34266;border-left:2px solid #b4ff68;border-right:2px solid #b4ff68"></div><div id="relayNeedle" style="position:absolute;top:0;bottom:0;width:5px;background:#fff1b2;box-shadow:0 0 12px #ffb52e"></div></div><button class="primary" id="relayStop" style="width:100%">LOCK RELAY · SPACE</button><p id="relayFeedback" class="hint">Time your press carefully.</p></div><div id="result" class="center hide"></div></div><div class="footer"><div style="flex:1;min-width:180px"><div class="row"><small id="meterLabel">CUTTING PROGRESS</small><small id="meterValue">0%</small></div><div class="progress"><div id="meter"></div></div><div class="row"><small>THERMAL LOAD</small><small id="thermal">0%</small></div><div class="progress heat"><div id="heatMeter"></div></div></div><button id="skip" class="hide">SKIP TO HACK (TEST)</button></div><p class="hint" id="footerHint">Fleeca Bank is a fictional GTA universe brand. This is a standalone FiveM-style game UI demonstration.</p></section></div></main><script>
+#cutFlare{pointer-events:none;mix-blend-mode:screen}
+#cutFlare circle{filter:drop-shadow(0 0 8px #ffb52f)}
+#cutFlare .spark-ray{transform-origin:0 0;animation:cutRay .18s ease-out infinite alternate;filter:drop-shadow(0 0 5px #ffd154)}
+@keyframes cutRay{from{opacity:.4;transform:scaleX(.5)}to{opacity:1;transform:scaleX(1.3)}}
+#sparkLayer line{filter:drop-shadow(0 0 4px #ff9d1f)}
+</style></head><body><main class="wrap"><header class="top"><div><div class="brand"><span class="brand-mark">F</span><span class="brand-word">FLEECA <em>BANK</em></span></div><div class="eyebrow">SECURITY OPERATIONS // UNAUTHORIZED ACCESS</div><h1>SECURITY BREACH</h1><div class="sub">Four-stage interactive browser prototype · Mouse and touch supported</div></div><div class="pill">SYSTEM STATUS: <span id="status">STANDBY</span></div></header><div class="layout"><aside class="panel"><h2>⚙ Difficulty Configuration</h2><label class="label" for="cutDifficulty">THERMITE CUTTING</label><select id="cutDifficulty"><option value="easy">Easy</option><option value="normal" selected>Normal</option><option value="hard">Hard</option><option value="extreme">Extreme</option></select><div class="desc" id="cutDesc"></div><label class="label" for="hackDifficulty">SECURITY HACK</label><select id="hackDifficulty"><option value="easy">Easy</option><option value="normal" selected>Normal</option><option value="hard">Hard</option><option value="extreme">Extreme</option></select><div class="desc" id="hackDesc"></div><button class="primary" id="start">START BREACH</button><button id="reset" style="width:100%;margin-top:9px">RESET DEMO</button><button id="soundToggle" type="button" aria-pressed="true" style="width:100%;margin-top:9px">🔊 SOUND: ON</button><p class="hint">Settings apply when starting a new run. Stage 1: trace the glowing outline to release each metal cutout. The cutter follows your mouse instantly. Stay on the orange seam while dragging: moving too far off the line counts as an error. Holding still will not cut. Release to cool. Stage 2: snip the highlighted wire exactly when the electrical pulse reaches the center scissors. Stage 3: complete 2–3 terminal codes. Stage 4: stabilize three security relays.</p></aside><section class="panel"><div class="stage"><b id="stageTitle">AWAITING OPERATOR</b><span id="instruction">Choose your difficulty and start.</span></div><div class="stats"><div class="stat"><small>TIME LEFT</small><b id="time">--</b></div><div class="stat"><small>ACCESS</small><b id="seam">0 / 0</b></div><div class="stat"><small>HEAT</small><b id="heatText">0%</b></div><div class="stat"><small>ERRORS</small><b id="errors">0 / 0</b></div></div><div class="view" id="view"><div class="center" id="welcome"><div style="font-size:58px">🔥</div><h2>Fleeca Vault Access Panel</h2><p>Cut through reinforced armor layers, expose and sever the correct security wires, override the keypad, and stabilize the lock relays.</p><p class="warning">Select difficulty settings and press Start Breach.</p></div><svg id="cutSvg" class="cut-svg hide" viewBox="0 0 700 500" aria-label="Thermite cutting panel"><defs><filter id="flareBlur"><feGaussianBlur stdDeviation="5"/></filter><pattern id="metal" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M0 22L22 0" stroke="#29414b" stroke-width="1"/></pattern></defs><rect x="27" y="24" width="646" height="452" rx="24" class="frame"/><rect x="42" y="39" width="616" height="422" rx="18" fill="url(#metal)" stroke="#20343e" stroke-width="2"/><rect x="80" y="68" width="540" height="364" rx="12" class="inner"/><g id="doorHardware"><rect x="95" y="83" width="510" height="336" rx="9" fill="#18262d" stroke="#74818a" stroke-width="5"/><rect x="111" y="99" width="478" height="304" rx="5" fill="#26353c" stroke="#111a21" stroke-width="8"/><rect x="123" y="111" width="454" height="280" rx="4" fill="url(#metal)" stroke="#6b7a80" stroke-width="2"/><path d="M125 148 H575 M125 352 H575" stroke="#64717a" stroke-width="6" opacity=".75"/><rect x="141" y="160" width="418" height="178" rx="7" fill="#111d24" stroke="#89969c" stroke-width="7"/><rect x="154" y="172" width="392" height="154" rx="3" fill="#28373e" stroke="#34444b" stroke-width="5"/><g fill="#a6b4b9" stroke="#18272d" stroke-width="3"><circle cx="147" cy="134" r="7"/><circle cx="553" cy="134" r="7"/><circle cx="147" cy="370" r="7"/><circle cx="553" cy="370" r="7"/></g><g id="layerBadge"><rect x="257" y="42" width="186" height="35" rx="5" fill="#101a1f" stroke="#9bc63e" stroke-width="2"/><text id="layerText" x="350" y="64" text-anchor="middle" font-size="13" font-weight="800" letter-spacing="2" fill="#c3e87b">ARMOR LAYER 01</text></g><g transform="translate(575 205)"><rect width="70" height="106" rx="7" fill="#0d171c" stroke="#64767b" stroke-width="3"/><circle cx="35" cy="32" r="20" fill="#273b40" stroke="#9fc945" stroke-width="3"/><path d="M25 32h20M35 22v20" stroke="#a4c7c7" stroke-width="4"/><rect x="17" y="71" width="36" height="8" rx="3" fill="#98d54b"/><rect x="17" y="85" width="24" height="5" rx="2" fill="#4b626a"/></g></g><g id="bolts"></g><g id="armorLayers"></g><g id="cutPaths"></g><g id="sparkLayer" pointer-events="none"></g><g id="cutFlare" pointer-events="none" style="display:none"><circle r="25" fill="#ff9a16" opacity=".20" filter="url(#flareBlur)"/><circle r="11" fill="#ffba35" opacity=".38"/><circle r="4" fill="#fffde4"/><g id="flareRays"></g></g><circle id="cutter" r="9" class="cursor" cx="-50" cy="-50"/></svg><div id="wireScreen" class="hide" style="width:100%;padding:12px;text-align:center"><div class="eyebrow">STAGE 02 // EXPOSED SECURITY CIRCUITS</div><h2 style="margin:9px">Cut the Alarm Wires</h2><p class="hint" id="wireHint">Wait for the electric spark to reach the center scissors, then snip.</p><div id="wireTiming" class="wire-timing safe" role="status">WAIT FOR THE SPARK TO REACH THE CENTER</div><div class="wire-module"><div class="wire-module-top"><span>FLEECA · SECURITY JUNCTION</span><span id="wireStep">CIRCUIT 1 / 3</span></div><svg id="wireSvg" viewBox="0 0 660 340" aria-label="Security wires cutting minigame" style="width:100%;touch-action:none;display:block"><rect x="17" y="18" width="626" height="304" rx="14" fill="#14232a" stroke="#70848b" stroke-width="8"/><rect x="42" y="43" width="576" height="254" rx="8" fill="#0b151c" stroke="#354c55" stroke-width="3"/><g id="wireArt"></g></svg><div class="wire-module-bottom"><span>⚡ LIVE SECURITY CIRCUITS</span><span id="wireStatus">WAIT FOR SAFE MOMENT</span></div></div><button id="wireSnip" class="primary wire-snip" type="button">✂ SNIP AT THE MARKED SPOT</button><p class="hint">The glowing wire is your target. <strong>Snip when the electric spark reaches the scissors marker in the center.</strong> Click the scissors or press SNIP exactly when the indicator turns green. Missing the moment triggers an alarm strike.</p></div><div id="hackScreen" class="hide" style="width:100%;text-align:center;padding:15px"><div class="eyebrow">FLEECA BANK // ACCESS CONTROL TERMINAL</div><div class="eyebrow" id="hackState">MEMORIZE THE SIGNAL</div><h2 style="margin:8px">Vault Door Keypad Override</h2><div class="terminal-screen"><span class="terminal-led"></span><span id="terminalReadout">SECURITY LOCK ENGAGED</span><span class="terminal-led"></span></div><p class="hint" id="hackHint">Watch the tiles illuminate, then repeat the sequence.</p><div class="keypad-housing"><div class="keypad-top"><span>FLEECA SECURE ENTRY</span><span>MODEL FLC-16</span></div><div class="hack-grid" id="hackGrid"></div><div class="keypad-bottom"><span>● ENCRYPTED INPUT</span><span>AUTHORIZED PERSONNEL ONLY</span></div></div><div id="hackProgress" class="sub"></div></div><div id="relayScreen" class="hide" style="width:100%;padding:28px;max-width:650px;margin:auto;text-align:center"><div class="eyebrow">STAGE 04 // SECURITY RELAY</div><h2>Stabilize the Lock Circuit</h2><p class="hint">Stop the moving indicator inside the green zone. Three successful locks complete the breach.</p><div id="relayCount" style="margin:18px;color:#b6ec64;font-weight:800">RELAY 1 / 3</div><div id="relayTrack" style="height:42px;position:relative;border:2px solid #567b31;border-radius:12px;background:#111e26;overflow:hidden;margin:28px 0"><div id="relayZone" style="position:absolute;top:0;bottom:0;width:18%;background:#76d34266;border-left:2px solid #b4ff68;border-right:2px solid #b4ff68"></div><div id="relayNeedle" style="position:absolute;top:0;bottom:0;width:5px;background:#fff1b2;box-shadow:0 0 12px #ffb52e"></div></div><button class="primary" id="relayStop" style="width:100%">LOCK RELAY · SPACE</button><p id="relayFeedback" class="hint">Time your press carefully.</p></div><div id="result" class="center hide"></div></div><div class="footer"><div style="flex:1;min-width:180px"><div class="row"><small id="meterLabel">CUTTING PROGRESS</small><small id="meterValue">0%</small></div><div class="progress"><div id="meter"></div></div><div class="row"><small>THERMAL LOAD</small><small id="thermal">0%</small></div><div class="progress heat"><div id="heatMeter"></div></div></div><button id="skip" class="hide">SKIP TO HACK (TEST)</button></div><p class="hint" id="footerHint">Fleeca Bank is a fictional GTA universe brand. This is a standalone FiveM-style game UI demonstration. Grinding audio: <a href="https://commons.wikimedia.org/wiki/File:Angle_Grinder_cutting_a_steel_chain_-_Soundbite.ogg" target="_blank" rel="noopener" style="color:#addc63">Pittigrilli / Wikimedia Commons</a> (CC BY-SA 4.0, unmodified).</p></section></div></main><script>
 const $=id=>document.getElementById(id);const cutSettings={easy:{seams:2,time:115,heat:0.45,cool:1.5,tolerance:29,errors:7,speed:105,hold:0.35},normal:{seams:3,time:115,heat:0.65,cool:1.25,tolerance:24,errors:5,speed:75,hold:0.65},hard:{seams:4,time:110,heat:0.95,cool:1.1,tolerance:18,errors:4,speed:57,hold:0.9},extreme:{seams:5,time:100,heat:1.25,cool:.95,tolerance:13,errors:3,speed:42,hold:1.15}};const hackSettings={easy:{length:3,time:35,errors:3,speed:780},normal:{length:5,time:28,errors:2,speed:620},hard:{length:7,time:24,errors:2,speed:500},extreme:{length:9,time:20,errors:1,speed:400}};
 const paths=["M120 115 L580 115 L580 175 L180 175 L180 230 L530 230 L530 280 L170 280 L170 340 L580 340 L580 390 L120 390 L120 115","M140 124 L555 124 L555 186 L155 186 L155 244 L550 244 L550 302 L145 302 L145 370 L558 370","M120 90 L575 90 L575 404 L120 404 L120 90","M175 100 L500 100 Q590 100 590 190 L590 315 Q590 400 500 400 L175 400 Q105 400 105 315 L105 190 Q105 100 175 100","M115 144 L235 100 L360 145 L485 100 L585 155 L500 235 L590 320 L485 392 L360 350 L235 392 L115 315 L205 230 Z","M160 105 L540 105 L540 155 L215 155 L215 205 L490 205 L490 255 L215 255 L215 305 L540 305 L540 355 L160 355 L160 105"];
 
@@ -73,10 +78,10 @@ function playSound(kind){
 let recordedGrinder=null;
 function getRecordedGrinder(){
  if(!recordedGrinder){
-  recordedGrinder=new Audio('https://sfxmint.com/dl/bench-grinder-05.mp3');
+  recordedGrinder=new Audio('https://upload.wikimedia.org/wikipedia/commons/5/5c/Angle_Grinder_cutting_a_steel_chain_-_Soundbite.ogg');
   recordedGrinder.preload='auto';
   recordedGrinder.loop=true;
-  recordedGrinder.volume=.40;
+  recordedGrinder.volume=.48;
  }
  return recordedGrinder;
 }
@@ -90,7 +95,7 @@ function startTorch(){
 function grindingMovement(){
  // Maintain a consistent sampled grinder tone while the cutter is in contact.
  // Do not add synthetic crackles or abrupt frequency changes.
- if(torchNode&&torchNode.audio)torchNode.audio.volume=.40;
+ if(torchNode&&torchNode.audio)torchNode.audio.volume=.48;
 }
 function stopTorch(){
  if(!torchNode)return;
@@ -144,7 +149,7 @@ if(phase==='cut'){
  if(active&&!heatLock&&pointerNear)heat=Math.min(100,heat+cutCfg.heat*dt*20);
  else heat=Math.max(0,heat-cutCfg.cool*dt*20);
  if(heat>=100&&!heatLock){
-  stopTorch();active=false;pointerNear=false;heatLock=true;errors++;
+  stopTorch();hideCutFlare();active=false;pointerNear=false;heatLock=true;errors++;
   $('instruction').textContent='CUTTER OVERHEATED — RELEASE AND COOL BELOW 40% TO RESUME.';
   if(errors>=cutCfg.errors){fail('CUTTER OVERHEATED');return}
  }
@@ -164,35 +169,64 @@ if(phase==='cut'){
 stats()}
 
 const sparkNS='http://www.w3.org/2000/svg';
-let sparks=[],sparkFrame=0,sparkClock=0,lastSparkEmit=0;
+let sparks=[],sparkFrame=0,sparkClock=0,lastSparkEmit=0,flareBuilt=false;
 function clearSparks(){
  if(sparkFrame){cancelAnimationFrame(sparkFrame);sparkFrame=0}
  sparks.forEach(p=>p.el.remove());sparks=[];sparkClock=0;lastSparkEmit=0;
  const layer=$('sparkLayer');if(layer)layer.innerHTML='';
+ const flare=$('cutFlare');if(flare)flare.style.display='none';
+}
+function buildCutFlare(){
+ if(flareBuilt)return;const rays=$('flareRays');if(!rays)return;flareBuilt=true;
+ for(let i=0;i<14;i++){
+  const g=document.createElementNS(sparkNS,'g');
+  const angle=(i*360/14+(i%2)*9);
+  g.setAttribute('transform','rotate('+angle+')');
+  const line=document.createElementNS(sparkNS,'line');
+  const start=12+(i%3)*4,finish=35+(i%5)*6;
+  line.setAttribute('x1',start);line.setAttribute('y1',0);
+  line.setAttribute('x2',finish);line.setAttribute('y2',i%2?4:-4);
+  line.setAttribute('stroke',i%3===0?'#fffef0':i%3===1?'#ffe065':'#ff7e1c');
+  line.setAttribute('stroke-width',i%2?2.4:3.4);
+  line.setAttribute('stroke-linecap','round');
+  line.setAttribute('class','spark-ray');
+  line.style.animationDelay=(-i*.037)+'s';
+  g.append(line);rays.append(g);
+ }
+}
+function positionCutFlare(point){
+ if(phase!=='cut'||!active||heatLock)return;
+ buildCutFlare();
+ const flare=$('cutFlare');if(!flare)return;
+ flare.setAttribute('transform','translate('+point.x.toFixed(1)+' '+point.y.toFixed(1)+')');
+ flare.style.display='';
+}
+function hideCutFlare(){
+ const flare=$('cutFlare');if(flare)flare.style.display='none';
 }
 function emitCutSparks(point,moved){
  if(phase!=='cut'||!active||!pointerNear||heatLock)return;
+ positionCutFlare(point);
+ if(moved<.5)return;
  const layer=$('sparkLayer');if(!layer)return;
  const now=performance.now();
- // Limit particles without leaving gaps when users move the cutter quickly.
- if(now-lastSparkEmit<16)return;
- lastSparkEmit=now;
- const count=Math.min(8,Math.max(3,Math.floor(moved*.38)));
- for(let i=0;i<count&&sparks.length<120;i++){
-  const angle=-Math.PI*.9+Math.random()*Math.PI*1.55;
-  const speed=70+Math.random()*190;
-  const life=.19+Math.random()*.40;
+ if(now-lastSparkEmit<26)return;lastSparkEmit=now;
+ const count=Math.min(16,Math.max(8,Math.floor(moved*.85)));
+ for(let i=0;i<count&&sparks.length<200;i++){
+  // A directional shower with a wide, obvious falloff.
+  const angle=-Math.PI*.95+Math.random()*Math.PI*1.65;
+  const speed=120+Math.random()*330;
+  const life=.34+Math.random()*.52;
   const el=document.createElementNS(sparkNS,'line');
-  const width=.9+Math.random()*2.4;
+  const width=1.8+Math.random()*3.2;
   el.setAttribute('stroke-width',width.toFixed(2));
   el.setAttribute('stroke-linecap','round');
-  el.setAttribute('stroke','#fff2a2');
+  el.setAttribute('stroke','#ffeb85');
   layer.append(el);
-  sparks.push({
-   el,x:point.x+(Math.random()-.5)*7,y:point.y+(Math.random()-.5)*7,
-   vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed-20,
-   ttl:life,life,width
-  });
+  sparks.push({el,
+   x:point.x+(Math.random()-.5)*9,y:point.y+(Math.random()-.5)*9,
+   vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed-55,
+   ttl:life,life,width});
  }
  if(!sparkFrame){sparkClock=now;sparkFrame=requestAnimationFrame(animateCutSparks)}
 }
@@ -204,20 +238,18 @@ function animateCutSparks(now){
   if(p.ttl<=0){p.el.remove();sparks.splice(i,1);continue}
   const fromX=p.x,fromY=p.y;
   p.x+=p.vx*dt;p.y+=p.vy*dt;
-  p.vy+=240*dt;p.vx*=Math.max(.7,1-dt*.6);
-  const fraction=p.ttl/p.life;
-  p.el.setAttribute('x1',fromX.toFixed(1));
-  p.el.setAttribute('y1',fromY.toFixed(1));
-  p.el.setAttribute('x2',p.x.toFixed(1));
-  p.el.setAttribute('y2',p.y.toFixed(1));
-  p.el.setAttribute('stroke',fraction>.65?'#fff9c5':fraction>.28?'#ffbf4c':'#ff572a');
-  p.el.setAttribute('opacity',(Math.min(1,fraction*1.9)).toFixed(2));
-  p.el.setAttribute('stroke-width',(p.width*(.4+.6*fraction)).toFixed(2));
+  p.vy+=310*dt;p.vx*=Math.max(.7,1-dt*.5);
+  const f=p.ttl/p.life;
+  p.el.setAttribute('x1',fromX.toFixed(1));p.el.setAttribute('y1',fromY.toFixed(1));
+  p.el.setAttribute('x2',p.x.toFixed(1));p.el.setAttribute('y2',p.y.toFixed(1));
+  p.el.setAttribute('stroke',f>.6?'#fffeda':f>.3?'#ffcc39':'#ff5f24');
+  p.el.setAttribute('opacity',(Math.min(1,f*2)).toFixed(2));
+  p.el.setAttribute('stroke-width',(p.width*(.4+.6*f)).toFixed(2));
  }
  if(sparks.length)sparkFrame=requestAnimationFrame(animateCutSparks);
 }
 function pointerPos(e){const pt=$('cutSvg').createSVGPoint();pt.x=e.clientX;pt.y=e.clientY;let m=$('cutSvg').getScreenCTM();return m?pt.matrixTransform(m.inverse()):{x:-999,y:-999}}function distance(a,b){return Math.hypot(a.x-b.x,a.y-b.y)}function cutOffTrack(e){
- stopTorch();
+ stopTorch();hideCutFlare();
  active=false;
  pointerNear=false;
  errors++;
@@ -249,6 +281,8 @@ function cutMove(e){
    if(d<best){best=d;nearest=j}
  }
  pointerNear=best<=cutCfg.tolerance;
+ if(pointerNear&&moved>=.5)emitCutSparks(p,moved);
+ else if(!pointerNear)hideCutFlare();
  // A visible drift away from the actual outline is a strike.
  // Looking at the WHOLE outline avoids false strikes if a fast pointer
  // jumps ahead to another valid part of the plate.
@@ -260,7 +294,7 @@ function cutMove(e){
    }
    if(!stillOnOutline){cutOffTrack(e);return}
  }
- if(pointerNear&&moved>=0.6&&nearest>current){startTorch();grindingMovement();emitCutSparks(p,moved);
+ if(pointerNear&&moved>=0.6&&nearest>current){startTorch();grindingMovement();
    progress=Math.min(1,nearest/(segments.length-1));
    updateMarker();
    if(progress>=.999){
@@ -269,10 +303,10 @@ function cutMove(e){
      return;
    }
  }
- if(!pointerNear)stopTorch();$('instruction').textContent=pointerNear?'FOLLOW THE METAL CUTOUT — Keep tracing while the torch burns. Release to cool.':'RETURN TO THE CUT FRONT — Stay close to the orange line.';
+ if(!pointerNear){stopTorch();hideCutFlare()}$('instruction').textContent=pointerNear?'FOLLOW THE METAL CUTOUT — Keep tracing while the torch burns. Release to cool.':'RETURN TO THE CUT FRONT — Stay close to the orange line.';
  stats();
 }
-$('cutSvg').addEventListener('pointerdown',e=>{if(phase!=='cut')return;if(heatLock){$('instruction').textContent='COOLING — WAIT FOR HEAT TO DROP BELOW 40%.';return}let p=pointerPos(e),at=segments[Math.floor(progress*(segments.length-1))];if(distance(p,at)<cutCfg.tolerance*1.45){cutSlipUntil=0;active=true;lastCutAt=performance.now();$('cutSvg').classList.remove('cut-slip');$('cutSvg').setPointerCapture(e.pointerId);cutMove(e)}else{$('instruction').textContent='Start at the bright cutting point, then drag along the orange path.'}});$('cutSvg').addEventListener('pointermove',cutMove);['pointerup','pointercancel','lostpointercapture'].forEach(evt=>$('cutSvg').addEventListener(evt,()=>{stopTorch();active=false;pointerNear=false;targetIndex=Math.floor(progress*(segments.length-1));updateMarker()}));
+$('cutSvg').addEventListener('pointerdown',e=>{if(phase!=='cut')return;if(heatLock){$('instruction').textContent='COOLING — WAIT FOR HEAT TO DROP BELOW 40%.';return}let p=pointerPos(e),at=segments[Math.floor(progress*(segments.length-1))];if(distance(p,at)<cutCfg.tolerance*1.45){cutSlipUntil=0;active=true;lastCutAt=performance.now();$('cutSvg').classList.remove('cut-slip');positionCutFlare(p);$('cutSvg').setPointerCapture(e.pointerId);cutMove(e)}else{$('instruction').textContent='Start at the bright cutting point, then drag along the orange path.'}});$('cutSvg').addEventListener('pointermove',cutMove);['pointerup','pointercancel','lostpointercapture'].forEach(evt=>$('cutSvg').addEventListener(evt,()=>{stopTorch();hideCutFlare();active=false;pointerNear=false;targetIndex=Math.floor(progress*(segments.length-1));updateMarker()}));
 
 
 const wireColors=['#e8b448','#e35d53','#5eafe7','#78d86b','#c58ce9','#e5e9ed'];
